@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="826.0" style="-fx-background-color: #F5F5DC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.contactPageControl">
+   <children>
+      <HBox layoutX="49.0" layoutY="234.0" prefHeight="653.0" prefWidth="826.0" style="-fx-background-color: #F5F5DC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="623.0" prefWidth="204.0">
+               <children>
+                  <Label prefHeight="15.0" prefWidth="211.0" text="Contact Person" textFill="#496f43">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="btAllContact" mnemonicParsing="false" onAction="#showAllContacts" prefHeight="29.0" prefWidth="204.0" style="-fx-background-color: #F5F5DC;" text="All Contacts" textFill="#4a7c42">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView disable="true" fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/parade.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btUngroup" mnemonicParsing="false" onAction="#showUngroup" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: #F5F5DC;" text="Ungrouped" textFill="#3b7236">
+                     <graphic>
+                        <ImageView disable="true" fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/leprechaun.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Separator opacity="0.82" prefHeight="10.0" prefWidth="204.0" />
+                  <Label prefHeight="20.0" prefWidth="188.0" text="Contact Group" textFill="#396f36">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ScrollPane hmax="0.5" prefHeight="281.0" prefWidth="192.0" style="-fx-background-color: #F5F5DC;" vmax="0.5">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                     <content>
+                        <AnchorPane prefHeight="291.0" prefWidth="187.0">
+                           <children>
+                              <ListView fx:id="ContactGroup" layoutY="62.0" prefHeight="293.0" prefWidth="186.0" style="-fx-background-color: #F5F5DC; -fx-border-color: #4a7c42;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                                 <effect>
+                                    <Blend />
+                                 </effect></ListView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+                  <HBox prefHeight="30.0" prefWidth="202.0">
+                     <children>
+                        <Button fx:id="btDeleteGroup" mnemonicParsing="false" onAction="#deleteGroup" prefHeight="37.0" prefWidth="97.0" style="-fx-background-color: #F5F5DC;" text="Delete" textFill="#468a43">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView disable="true" fitHeight="16.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/minus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator opacity="0.75" prefHeight="8.0" prefWidth="202.0" />
+                  <Button fx:id="btAddGroup" mnemonicParsing="false" onAction="#addGroup" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: #F5F5DC;" text="Add " textFill="#43863c">
+                     <font>
+                        <Font name="Comic Sans MS Italic" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView disable="true" fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/more.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+                  <TextField fx:id="tfgroupName" maxWidth="-Infinity" prefHeight="20.0" prefWidth="150.0" promptText="Group Name">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Text fx:id="taddGroupNotice" fill="#c36c6c" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="191.3603515625">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fill="#806969" strokeType="OUTSIDE" strokeWidth="0.0" text="Tips:  删除分组 ：选择分组点击删除。 增加分组：点击增加按钮，输入组名，再点击增加按钮。" wrappingWidth="187.00244140625">
+                     <font>
+                        <Font name="STSong" size="9.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <Separator opacity="0.59" orientation="VERTICAL" prefHeight="653.0" prefWidth="12.0" />
+            <VBox prefHeight="653.0" prefWidth="615.0">
+               <children>
+                  <HBox prefHeight="32.0" prefWidth="614.0">
+                     <children>
+                        <Separator maxHeight="-Infinity" opacity="0.41" orientation="VERTICAL" prefHeight="40.0">
+                           <HBox.margin>
+                              <Insets top="3.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <Label prefHeight="39.0" prefWidth="541.0" text="     Name            Email               Phone             Address             Group" textFill="#3f6b44">
+                           <font>
+                              <Font name="Comic Sans MS" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ScrollPane prefHeight="246.0" prefWidth="584.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="561.0">
+                           <children>
+                              <ListView fx:id="ContactPerson" layoutX="-1.0" prefHeight="282.0" prefWidth="566.0" style="-fx-border-color: #4a7c42; -fx-background-color: #F5F5DC;" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                     <VBox.margin>
+                        <Insets left="5.0" right="25.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+                  <HBox prefHeight="23.0" prefWidth="614.0">
+                     <children>
+                        <Button fx:id="btAddPerson" mnemonicParsing="false" onAction="#addPerson" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #F5F5DC;" text="Add" textFill="#458a48">
+                           <graphic>
+                              <ImageView disable="true" fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/more.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Separator opacity="0.81" orientation="VERTICAL" prefHeight="39.0" prefWidth="24.0" />
+                        <Button fx:id="btDeletePerson" mnemonicParsing="false" onAction="#deletePerson" prefHeight="37.0" prefWidth="97.0" style="-fx-background-color: #F5F5DC;" text="Delete" textFill="#468a43">
+                           <graphic>
+                              <ImageView disable="true" fitHeight="16.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/minus.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Separator opacity="0.8" orientation="VERTICAL" prefHeight="41.0" prefWidth="26.0" />
+                        <ComboBox fx:id="cbSearch" editable="true" prefHeight="36.0" prefWidth="220.0" style="-fx-background-color: #F5F5DC;">
+                           <HBox.margin>
+                              <Insets top="4.0" />
+                           </HBox.margin>
+                           <effect>
+                              <SepiaTone />
+                           </effect>
+                        </ComboBox>
+                        <Button fx:id="btSearch" mnemonicParsing="false" onAction="#SearchContact" style="-fx-background-color: #F5F5DC;" text="Search" textFill="#5a8a54">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView disable="true" fitHeight="26.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/magnifying-glass.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator opacity="0.62" prefHeight="10.0" prefWidth="614.0" />
+                  <Pane prefHeight="322.0" prefWidth="614.0">
+                     <children>
+                        <ImageView fitHeight="127.0" fitWidth="123.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/irish.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btUpLoadPhoto" layoutX="8.0" layoutY="130.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Corbel" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView disable="true" fitHeight="27.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/irish.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <HBox layoutX="145.0" layoutY="14.0" prefHeight="151.0" prefWidth="459.0">
+                           <children>
+                              <VBox prefHeight="322.0" prefWidth="55.0">
+                                 <children>
+                                    <Text fill="#e46060" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="73.3603515625">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Corbel Bold" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#f26b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#ee6e6e" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#ee6464" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#f56565" strokeType="OUTSIDE" strokeWidth="0.0" text="Homepage">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#f86b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="tfpname" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="name">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfpphone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="phone">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfptelephone" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="telephone">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfpemail" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="email">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfphomepage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="a website">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfpbirthday" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="birthday">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="151.0" prefWidth="79.0">
+                                 <children>
+                                    <Text fill="#f26b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Company">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="3.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#f26b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#f26b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#f26b6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#f26969e8" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#f26969e8" strokeType="OUTSIDE" strokeWidth="0.0" text="Number">
+                                       <font>
+                                          <Font name="Corbel" size="15.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="107.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="tfpcompany" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="company">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="1.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfpaddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="address">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfppostcode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="postcode">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfpnotes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="...">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfemergency" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="contact way">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="tfemerNumber" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="for emergency">
+                                       <font>
+                                          <Font name="Corbel" size="11.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btclear" layoutX="439.0" layoutY="168.0" mnemonicParsing="false" onAction="#clearCurrentPerson" prefHeight="29.0" prefWidth="10.0" style="-fx-background-color: #F5F5DC;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/bin.png" />
+                                 </image></ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btmodifie" layoutX="387.0" layoutY="165.0" mnemonicParsing="false" onAction="#modifiePersonInfo" prefHeight="35.0" prefWidth="50.0" style="-fx-background-color: #F5F5DC;">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/paint-brush.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text fill="#806969" layoutX="14.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tips:  " wrappingWidth="35.00244140625">
+                           <font>
+                              <Font name="Corbel" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#806969" layoutX="14.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="增加联系人：选择分组（默认无分组），单击垃圾桶，输入信息，单击+ 按钮增加联系人。 删除联系人：选择分组，删除联系人，则在该分组内删除联系人。不选择分组，彻底删除该联系人。更改现有联系人信息：选择联系人，修改完毕后点击刷子保存。添加至分组：输入组名，单击回车按钮。" wrappingWidth="569.0">
+                           <font>
+                              <Font name="STXingkai" size="9.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#806969" layoutX="14.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="569.0">
+                           <font>
+                              <Font name="STXingkai" size="9.0" />
+                           </font>
+                        </Text>
+                        <Separator layoutX="3.0" layoutY="216.0" opacity="0.72" prefHeight="8.0" prefWidth="608.0" />
+                        <Text fill="#e46060" layoutX="145.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add to group" wrappingWidth="97.0">
+                           <font>
+                              <Font name="Corbel Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="tfAddToGroup" layoutX="145.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" promptText="group name">
+                           <font>
+                              <Font name="Corbel" size="11.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btAddToGroup" layoutX="247.0" layoutY="176.0" mnemonicParsing="false" onAction="#addPersonToGroup" prefHeight="34.0" prefWidth="24.0" style="-fx-background-color: #F5F5DC;" textFill="#458a48">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView disable="true" fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/img/dir.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text fx:id="addToGroupNotice" fill="#806969" layoutX="147.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.0">
+                           <font>
+                              <Font name="Corbel" size="10.0" />
+                           </font>
+                        </Text>
+                     </children></Pane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

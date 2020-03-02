@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="780.0" prefWidth="1123.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.loginPageControl">
+   <children>
+      <BorderPane blendMode="SRC_ATOP" layoutY="-3.0" prefHeight="780.0" prefWidth="1134.0">
+         <top>
+            <Label prefHeight="234.0" prefWidth="392.0" text="    Login" textFill="#5b4a39c2" textOverrun="WORD_ELLIPSIS" BorderPane.alignment="BOTTOM_LEFT">
+               <font>
+                  <Font name="High Tower Text" size="88.0" />
+               </font>
+            </Label>
+         </top>
+         <left>
+            <VBox prefHeight="138.0" prefWidth="361.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="361.0" text="Account " textAlignment="RIGHT" textFill="#9e7c5b">
+                     <font>
+                        <Font name="Roboto Bold" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="82.0" prefWidth="361.0" text="Password" textFill="#866f5b">
+                     <font>
+                        <Font name="Roboto Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </VBox>
+         </left>
+         <right>
+            <VBox prefHeight="165.0" prefWidth="287.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="tfaccount" opacity="0.7" prefHeight="52.0" prefWidth="237.0" promptText="account">
+                     <opaqueInsets>
+                        <Insets right="50.0" />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="tfpassword" prefHeight="52.0" prefWidth="237.0" promptText="password">
+                     <VBox.margin>
+                        <Insets right="50.0" top="20.0" />
+                     </VBox.margin>
+                  </PasswordField>
+               </children>
+               <BorderPane.margin>
+                  <Insets right="450.0" />
+               </BorderPane.margin>
+            </VBox>
+         </right>
+         <bottom>
+            <HBox blendMode="LIGHTEN" prefHeight="369.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btlogin" mnemonicParsing="false" onAction="#toLogin" text="Login" textFill="#030302">
+                     <HBox.margin>
+                        <Insets left="300.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btcreate" mnemonicParsing="false" onAction="#toCreateAccount" text="Create an account">
+                     <font>
+                        <Font name="Berlin Sans FB" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btexit" mnemonicParsing="false" onAction="#toExit" text="EXIT" textFill="#1b0e0a">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="85.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </HBox>
+         </bottom>
+      </BorderPane>
+      <ImageView disable="true" fitHeight="813.0" fitWidth="1175.0" layoutX="-41.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/img/login1.jpg" />
+         </image></ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1000.0" stylesheets="@../../resources/cssSheet/button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.loginPageControl">
+   <children>
+      <HBox layoutX="343.0" layoutY="169.0" prefHeight="650.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="651.0" fitWidth="514.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/img/signup.jpg" />
+               </image></ImageView>
+            <VBox prefHeight="651.0" prefWidth="530.0" style="-fx-background-color: #FFFAF0;">
+               <children>
+                  <Label prefHeight="59.0" prefWidth="489.0" text="          Fill up our registration form*" textFill="#191b39" wrapText="true">
+                     <font>
+                        <Font name="Segoe Script Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="59.0" prefWidth="489.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   First name*">
+                           <HBox.margin>
+                              <Insets left="30.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Webdings" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfFirstname" prefHeight="45.0" prefWidth="214.0" promptText="e.g. Jon">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="53.0" prefWidth="489.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   Last name*">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfLastname" prefHeight="45.0" prefWidth="214.0" promptText="e.g. Snow" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="52.0" prefWidth="489.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   Email*">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfEmail" prefHeight="45.0" prefWidth="214.0" promptText="e.g. Jon@google.com" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="44.0" prefWidth="489.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   Gender">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <RadioButton fx:id="rbMale" mnemonicParsing="false" text="Male">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gender" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rbFemale" mnemonicParsing="false" text="Female" toggleGroup="$gender">
+                           <HBox.margin>
+                              <Insets left="25.0" top="10.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="54.0" prefWidth="500.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   Account*">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfAccountSignUp" prefHeight="45.0" prefWidth="214.0" promptText="e.g. JonSnow0101" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="55.0" prefWidth="500.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="125.0" text="   Password*">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfPasswordSignUp" prefHeight="45.0" prefWidth="214.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="53.0" prefWidth="500.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="157.0" text="        Birthday">
+                           <font>
+                              <Font name="Wingdings" size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="pickBirthday" prefHeight="41.0" prefWidth="214.0" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <Label prefHeight="89.0" prefWidth="422.0" text="By clicking Sign Up,you agree to our Terms and that you have read and understand our Policy, including our Cookie Use. Please notice all the * blank must be filled up or your account will not be set up." wrapText="true">
+                     <VBox.margin>
+                        <Insets left="30.0" right="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Webdings" size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator prefHeight="0.0" prefWidth="500.0" />
+                  <Button fx:id="btSignUp" mnemonicParsing="false" onAction="#menberSignUp" stylesheets="@../../resources/cssSheet/button.css" text="Sign Up" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="180.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Webdings" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

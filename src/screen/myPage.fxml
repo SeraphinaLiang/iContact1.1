@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="826.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.MyPageControl">
+   <children>
+      <HBox layoutX="8.0" layoutY="180.0" prefHeight="645.0" prefWidth="826.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="645.0" prefWidth="243.0">
+               <children>
+                  <ImageView fx:id="clientPhoto" fitHeight="203.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/img/leprechaun%20(2).png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button fx:id="btUpLoadPhoto" mnemonicParsing="false" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView disable="true" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/irish.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Corbel" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Separator opacity="0.7" prefHeight="0.0" prefWidth="261.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Text fill="#d07d7d" opacity="0.76" strokeType="OUTSIDE" strokeWidth="0.0" text=" _My Job_____________" wrappingWidth="242.552734375">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextArea fx:id="taMyJob" opacity="0.88" prefHeight="68.0" prefWidth="231.0" promptText="Tell us about your work..." style="-fx-border-color: #E6E6FA; -fx-background-color: #E6E6FA;" wrapText="true">
+                     <font>
+                        <Font name="Corbel Bold" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="7.0" right="5.0" top="2.0" />
+                     </VBox.margin>
+                     <effect>
+                        <SepiaTone level="0.47" />
+                     </effect>
+                  </TextArea>
+                  <Text fill="#e89a9a" opacity="0.86" strokeType="OUTSIDE" strokeWidth="0.0" text="__My Skills___________" wrappingWidth="238.3603515625">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="taMySkill" opacity="0.88" prefHeight="68.0" prefWidth="228.0" promptText="Tell us about your skills..." style="-fx-border-color: #E6E6FA; -fx-background-color: #E6E6FA;" wrapText="true">
+                     <effect>
+                        <SepiaTone level="0.47" />
+                     </effect>
+                     <font>
+                        <Font name="Corbel Bold" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="7.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <Text fill="#e89a9a" opacity="0.86" strokeType="OUTSIDE" strokeWidth="0.0" text="__Education Background__" wrappingWidth="238.3603515625">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="taMyEB" opacity="0.88" prefHeight="68.0" prefWidth="228.0" promptText="Tell us about your education background..." style="-fx-border-color: #E6E6FA; -fx-background-color: #E6E6FA;" wrapText="true">
+                     <effect>
+                        <SepiaTone level="0.47" />
+                     </effect>
+                     <font>
+                        <Font name="Corbel Bold" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="7.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children>
+            </VBox>
+            <Separator opacity="0.73" orientation="VERTICAL" prefHeight="645.0" prefWidth="41.0" />
+            <VBox prefHeight="645.0" prefWidth="590.0">
+               <children>
+                  <Pane prefHeight="94.0" prefWidth="588.0">
+                     <children>
+                        <Text fill="#3b654a" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Good day,">
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="TextName" fill="#3b654a" layoutX="196.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jon Snow." wrappingWidth="349.857421875">
+                           <font>
+                              <Font name="Comic Sans MS Italic" size="47.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="189.0" prefWidth="576.0">
+                     <children>
+                        <Text layoutX="110.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="放音乐" />
+                     </children></Pane>
+                  <TabPane fx:id="tabPane" blendMode="SRC_ATOP" onMouseClicked="#clickOnTabpane" opacity="0.92" prefHeight="356.0" prefWidth="581.0" style="-fx-background-color: #E6E6FA; -fx-border-color: #E6E6FA;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="800.0" tabMinHeight="20.0" tabMinWidth="254.0">
+                    <tabs>
+                      <Tab fx:id="tabBasic" text="My Basic Information">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="42.0" prefWidth="554.0">
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="102.0" text="First Name" textFill="#3f723e">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfFirstname" prefHeight="36.0" prefWidth="160.0">
+                                             <HBox.margin>
+                                                <Insets top="7.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btFirstname" mnemonicParsing="false" onAction="#changeFirstname" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: #E6E6FA;">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <graphic>
+                                                <ImageView disable="true" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../resources/img/icons8-barber-scissors-100.png" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor></ImageView>
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="46.0" prefWidth="554.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="102.0" text="Last Name" textFill="#356547">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfLastname" prefHeight="36.0" prefWidth="160.0">
+                                             <HBox.margin>
+                                                <Insets right="6.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btLastname" mnemonicParsing="false" onAction="#changeLastname" prefHeight="40.0" prefWidth="47.0" style="-fx-background-color: #E6E6FA;">
+                                             <graphic>
+                                                <ImageView disable="true" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../resources/img/icons8-barber-scissors-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="41.0" prefWidth="554.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="102.0" text="Email" textFill="#335436">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfEmail" prefHeight="36.0" prefWidth="160.0">
+                                             <HBox.margin>
+                                                <Insets right="7.0" />
+                                             </HBox.margin></TextField>
+                                          <Button fx:id="btEmail" mnemonicParsing="false" onAction="#changeEmail" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: #E6E6FA;">
+                                             <graphic>
+                                                <ImageView disable="true" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../resources/img/icons8-barber-scissors-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="41.0" prefWidth="554.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="70.0" text="Gender" textFill="#335436">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="32.0" style="-fx-background-color: #E6E6FA;">
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <RadioButton fx:id="rbMale" mnemonicParsing="false" text="Male" textFill="#4f7548">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets top="5.0" />
+                                             </HBox.margin>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="gender" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton fx:id="rbFemale" mnemonicParsing="false" text="Female" textFill="#43793e" toggleGroup="$gender">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="5.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="40.0" prefWidth="554.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="102.0" text="Birthday" textFill="#335436">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfBirthday" prefHeight="36.0" prefWidth="160.0">
+                                             <HBox.margin>
+                                                <Insets right="7.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btBirthday" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#changeBirthday" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: #E6E6FA;">
+                                             <graphic>
+                                                <ImageView disable="true" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../resources/img/icons8-barber-scissors-100.png" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </graphic>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="41.0" prefWidth="554.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label prefHeight="37.0" prefWidth="102.0" text="Address" textFill="#335436">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="tfAddress" prefHeight="36.0" prefWidth="160.0">
+                                             <HBox.margin>
+                                                <Insets right="7.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Button fx:id="btAddress" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#changeAddress" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: #E6E6FA;">
+                                             <graphic>
+                                                <ImageView disable="true" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../resources/img/icons8-barber-scissors-100.png" />
+                                                   </image>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ImageView>
+                                             </graphic>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                      <Tab fx:id="tabSecurity" text="Security">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="55.0" prefWidth="564.0">
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="230.0" text="   Change Password" textFill="#345b32">
+                                             <font>
+                                                <Font name="Comic Sans MS Bold" size="24.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <ImageView fitHeight="39.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                             <HBox.margin>
+                                                <Insets top="8.0" />
+                                             </HBox.margin>
+                                             <image>
+                                                <Image url="@../../resources/img/icons8-key-256.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="50.0" prefWidth="564.0">
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="166.0" text="    Old Password" textFill="#3f723e">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="21.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="22.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="tfOldpassword" prefHeight="36.0" prefWidth="182.0">
+                                             <HBox.margin>
+                                                <Insets left="15.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label fx:id="labelPassword" prefHeight="51.0" prefWidth="161.0" textFill="#9a3d3d" wrapText="true">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Comic Sans MS Italic" size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="52.0" prefWidth="564.0">
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="166.0" text="New Password" textFill="#3f723e">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="21.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="22.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="tfNewpassword" prefHeight="36.0" prefWidth="182.0">
+                                             <HBox.margin>
+                                                <Insets top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="15.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="45.0" prefWidth="564.0">
+                                       <children>
+                                          <Label prefHeight="47.0" prefWidth="166.0" text="Repeat password" textFill="#3f723e">
+                                             <font>
+                                                <Font name="Comic Sans MS" size="21.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="tfpasswordRepeat" prefHeight="36.0" prefWidth="182.0">
+                                             <HBox.margin>
+                                                <Insets left="17.0" top="5.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="btPasswordConfirm" mnemonicParsing="false" onAction="#confirmPasswordChange" style="-fx-background-color: #2E8B57;" text="Comfirm" textFill="WHITE">
+                                       <VBox.margin>
+                                          <Insets left="286.0" top="10.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Comic Sans MS Bold" size="18.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </content></Tab>
+                    </tabs>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </TabPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
