@@ -279,7 +279,9 @@ public class contactPageControl implements Initializable {
 				utility.deleteConnectWithGroupname(groupName);
 			//	Data.groupsList.remove(groupName);
 				Data.groupsList.get(groupName).setDelete(true);
-				this.currentGroup = null;
+				
+				//删掉这个组以合，personlistview换成全部联系人
+				this.currentGroup = "AllContacts";
 				repaint();
 			}
 		}

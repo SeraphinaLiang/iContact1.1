@@ -240,6 +240,9 @@ public class SQLDemo {
 				// 通过字段检索
 				String groupname = rs.getString("groupname");
 				int numberOfPeople = rs.getInt("numberofpeople"); // default 0
+				
+			//	System.out.println("read"+numberOfPeople);
+				
 				int ifStar = rs.getInt("ifstar"); // 0 false 1 true
 
 				// 新建Group对象,加入到staticStuff.Data.groupList
@@ -556,6 +559,8 @@ public class SQLDemo {
 			Boolean inDB = entry.getValue().isInDB();
 			Boolean isDelete = entry.getValue().isDelete();
 			Group g = entry.getValue();
+			
+		//	System.out.println("1.save:"+g.getNumberOfPeople());
 
 			// 1. inDB=false && isDelete=true----从容器类删除
 			if (!inDB && isDelete) {
@@ -574,6 +579,9 @@ public class SQLDemo {
 					ps=conn.prepareStatement(sql);
 					ps.setString(1, g.getGroupName());
 					ps.setInt(2,g.getNumberOfPeople());
+					
+			//		System.out.println("2.insert save:"+g.getNumberOfPeople());
+					
 					ps.setInt(3,ifStar);
 					ps.setString(4, account);
 					
@@ -590,6 +598,7 @@ public class SQLDemo {
 						}
 					}
 				}
+			
 			}
 			// 3. inDB=true && isDelete=true-----DB删除该行（删除不存在的行没有影响）
 			else if (inDB && isDelete) {
@@ -613,6 +622,7 @@ public class SQLDemo {
 						}
 					}
 				}
+			
 			}
 			// 4. inDB=true && isDelete=false update table
 			else if (inDB && !isDelete) {
@@ -626,6 +636,9 @@ public class SQLDemo {
 				try {
 					ps = conn.prepareStatement(sql);
 					ps.setInt(1, g.getNumberOfPeople());
+					
+					//System.out.println("update save:"+g.getNumberOfPeople());
+					
 					ps.setInt(2, ifStar);
 					ps.setString(3, g.getGroupName());
 					ps.setString(4, account);
@@ -642,6 +655,7 @@ public class SQLDemo {
 						}
 					}
 				}
+				
 			}
 		}
 

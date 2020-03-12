@@ -23,21 +23,21 @@ import net.sourceforge.pinyin4j.format.*;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 public class utility {
-	
+
 	// 得到Data.contactList的实际大小---去除delete的
 	public static int getContactListActualSize() {
-		int size=Data.contactList.size();
-		Iterator<Entry<String, ContactPerson>> iter=Data.contactList.entrySet().iterator();
-		while(iter.hasNext()) {
+		int size = Data.contactList.size();
+		Iterator<Entry<String, ContactPerson>> iter = Data.contactList.entrySet().iterator();
+		while (iter.hasNext()) {
 			Entry<String, ContactPerson> entry = iter.next();
 			ContactPerson c = entry.getValue();
-			if(c.isDelete()) {
+			if (c.isDelete()) {
 				size--;
 			}
 		}
 		return size;
 	}
-	
+
 	// 根据联系人ID得到其所在分组
 	public static String getGroupnameWithLinkmanID(String id) {
 		StringBuffer outcome = new StringBuffer();
@@ -144,17 +144,20 @@ public class utility {
 		Iterator<Connect> iter = Data.connectList.iterator();
 		while (iter.hasNext()) {
 			Connect con = iter.next();
-			if (con.getGroupName().equals(groupName)) {
-				String id = con.getLinkmanID();
-				// 找到这个联系人
-				ContactPerson c = Data.contactList.get(id);
-				if (!c.isDelete()) {
-					PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(),
-							groupName);
-					cell.setTheId(c.getId());
-					personList.add(cell);
+			if (!con.isDelete()) {
+				if (con.getGroupName().equals(groupName)) {
+					String id = con.getLinkmanID();
+					// 找到这个联系人
+					ContactPerson c = Data.contactList.get(id);
+					if (!c.isDelete()) {
+						PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(),
+								groupName);
+						cell.setTheId(c.getId());
+						personList.add(cell);
+					}
 				}
 			}
+
 		}
 		return personList;
 	}

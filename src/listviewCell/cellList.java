@@ -27,9 +27,15 @@ public class cellList {
 		Iterator<Entry<String, Group>> iter = groups.entrySet().iterator();
 		while (iter.hasNext()) {
 			Entry<String, Group> entry = iter.next();
-			if (!entry.getValue().isDelete()) {
+			Group g=entry.getValue();
+			if (!g.isDelete()) {
 				String s = (String) entry.getKey();
-				int n = (int) entry.getValue().getNumberOfPeople();
+				int n=utility.searchContactsWithGroup(s).size();
+			//	int n = (int) entry.getValue().getNumberOfPeople(); 这句有点毛病
+				
+				System.out.println("1.running: "+n);
+				System.out.println("2.running normal: "+utility.searchContactsWithGroup(s).size());
+				
 				boolean star = (boolean) entry.getValue().isIfStar();
 				groupList.add(new GroupCell(s, n, star));
 			}
