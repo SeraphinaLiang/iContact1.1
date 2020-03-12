@@ -239,12 +239,12 @@
                   <Separator opacity="0.62" prefHeight="10.0" prefWidth="614.0" />
                   <Pane prefHeight="322.0" prefWidth="614.0">
                      <children>
-                        <ImageView fitHeight="127.0" fitWidth="123.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="photo" fitHeight="127.0" fitWidth="123.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/img/irish.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btUpLoadPhoto" layoutX="8.0" layoutY="130.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                        <Button fx:id="btUpLoadPhoto" layoutX="8.0" layoutY="130.0" mnemonicParsing="false" onAction="#uploadPhoto" prefHeight="31.0" prefWidth="117.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

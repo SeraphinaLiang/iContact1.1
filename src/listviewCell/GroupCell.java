@@ -19,7 +19,7 @@ public class GroupCell extends ListCell<String> {
 	private Label right = new Label(")");
 	private Label number = new Label("0");
 
-	private Image img = new Image("parade.png");
+	private Image img = new Image("file:resources/img/parade.png");
 	//private Image imgStar=new Image("star.png");
 	
 	private ImageView imgV=new ImageView(img); 
@@ -30,7 +30,6 @@ public class GroupCell extends ListCell<String> {
 		this.setNumber(n);
 		initLayout();
   
-	//	System.out.println(img.getUrl());
 	}
 
 	private void initLayout() {

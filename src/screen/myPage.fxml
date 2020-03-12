@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.canvas.*?>
@@ -27,7 +28,7 @@
                         <Insets bottom="15.0" left="20.0" top="15.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button fx:id="btUpLoadPhoto" mnemonicParsing="false" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                  <Button fx:id="btUpLoadPhoto" mnemonicParsing="false" onAction="#upLoadPhoto" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="40.0" />
                      </VBox.margin>
@@ -134,7 +135,7 @@
                   </Pane>
                   <Pane prefHeight="189.0" prefWidth="576.0">
                      <children>
-                        <Text layoutX="110.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="放音乐" />
+                        <WebView fx:id="webview" layoutX="6.0" opacity="0.7" prefHeight="183.0" prefWidth="535.0" />
                      </children></Pane>
                   <TabPane fx:id="tabPane" blendMode="SRC_ATOP" onMouseClicked="#clickOnTabpane" opacity="0.92" prefHeight="356.0" prefWidth="581.0" style="-fx-background-color: #E6E6FA; -fx-border-color: #E6E6FA;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="800.0" tabMinHeight="20.0" tabMinWidth="254.0">
                     <tabs>

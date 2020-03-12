@@ -68,7 +68,7 @@ public class App extends Application {
 	public static void exitSystem() {
 		sql.saveClientToDB();
 		try {
-		//没登陆关闭不了界面
+		//解决没登陆关闭不了界面
 			sql.saveGroupToDB(Data.currentClient.getAccount());
 			sql.saveLinkmanToDB(Data.currentClient.getAccount());
 			sql.saveConnectToDB();

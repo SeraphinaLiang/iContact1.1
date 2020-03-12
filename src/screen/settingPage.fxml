@@ -25,7 +25,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
+                  <Button fx:id="btConnectPhone" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#connectToPhone" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -44,7 +44,7 @@
             </Pane>
             <Pane prefHeight="188.0" prefWidth="338.0" GridPane.rowIndex="1">
                <children>
-                  <Button layoutX="14.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">
+                  <Button fx:id="btUpload" layoutX="14.0" mnemonicParsing="false" onAction="#upload" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Save To" textFill="WHITE">
+                  <Button fx:id="btSave" layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#save" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Save To" textFill="WHITE">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>

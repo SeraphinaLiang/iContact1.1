@@ -17,7 +17,7 @@ public class PersonCell extends ListCell<String>{
 	private Label address=new Label();
 	private Label currentGroup=new Label();
 	
-	private Image img = new Image("pin.png");
+	private Image img = new Image("file:resources/img/pin.png");
 	private ImageView imgV=new ImageView(img); 
 
 	public PersonCell(String name,String email,String phone,String address,String currentGroup) {

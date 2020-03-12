@@ -1,5 +1,6 @@
 package screen;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -38,6 +39,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -122,6 +124,11 @@ public class contactPageControl implements Initializable {
 	private Text addToGroupNotice;// 联系人增加到分组提示信息
 	@FXML
 	private TextField tfAddToGroup;
+	// --------------------------
+	@FXML
+	private ImageView photo;
+	@FXML
+	private Button btUpLoadPhoto;
 	// -------------------------
 
 	private String currentGroup = null; // 当前显示联系人的分组 name
@@ -139,6 +146,25 @@ public class contactPageControl implements Initializable {
 		selectGroupListener();
 		selectPersonListener();
 	}
+	
+	//上传照片
+	@FXML
+    void uploadPhoto(ActionEvent event) {
+		//选择文件
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("上传联系人的照片");
+		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+		File file =fileChooser.showOpenDialog(app.App.getPrimaryStage());
+		
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
+		
+        //更新界面
+		Image img = new Image(file.toURI().toString());	
+		photo.setImage(img);
+		//导入数据库
+		
+    }
 
 	// 界面初始化
 	void init() {
@@ -277,10 +303,10 @@ public class contactPageControl implements Initializable {
 			if (!this.currentGroup.equals("AllContacts") && !this.currentGroup.equals("Ungroup")) {
 				String groupName = this.currentGroup;
 				utility.deleteConnectWithGroupname(groupName);
-			//	Data.groupsList.remove(groupName);
+				// Data.groupsList.remove(groupName);
 				Data.groupsList.get(groupName).setDelete(true);
-				
-				//删掉这个组以合，personlistview换成全部联系人
+
+				// 删掉这个组以合，personlistview换成全部联系人
 				this.currentGroup = "AllContacts";
 				repaint();
 			}
@@ -334,10 +360,10 @@ public class contactPageControl implements Initializable {
 			ContactPerson cp = Data.contactList.get(cell.getTheId());
 			if (this.currentGroup.equals("AllContacts") || this.currentGroup.equals("Ungroup")) {
 				// 删除所有connect 和这个 contactPerson
-				
-			//	Data.contactList.remove(cp.getId());
+
+				// Data.contactList.remove(cp.getId());
 				Data.contactList.get(cp.getId()).setDelete(true);
-				
+
 				utility.deleteConnectWithLinkmanID(cp.getId());
 				repaint();
 			} else {
@@ -348,9 +374,9 @@ public class contactPageControl implements Initializable {
 				while (iter.hasNext()) {
 					Connect con = iter.next();
 					if (con.getGroupName().equals(groupName) && con.getLinkmanID().equals(id)) {
-						
+
 						con.setDelete(true);
-						//Data.connectList.remove(con);
+						// Data.connectList.remove(con);
 						// 该组人数减一
 						Group p = Data.groupsList.get(groupName);
 						p.setNumberOfPeople(p.getNumberOfPeople() - 1);
@@ -512,7 +538,11 @@ public class contactPageControl implements Initializable {
 
 	// 更新联系人详细资料---图片还没加
 	void refreshDetailInformation(ContactPerson cp) {
-		// 从数据库中读取该联系人照片，位置resources/linkmanPhoto/id.jpg
+		// 从数据库中读取该联系人照片，位置resources/linkmanPhoto/id.jpg TODO
+		//如果没有照片，则用DEFAULT IMG
+		
+		
+		
 		// app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
 		this.tfpname.setText(cp.getName());
 		this.tfpphone.setText(cp.getPhone());

@@ -1,5 +1,7 @@
 package screen;
 
+import java.io.File;
+
 import basic.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,14 +13,21 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import staticStuff.Data;
 
 public class MyPageControl {
 
-	//右下角的
+	WebEngine webEngine;
+	@FXML
+	private WebView webview;
+	// 右下角的
 	@FXML
 	private TabPane tabPane;
 	@FXML
@@ -27,7 +36,7 @@ public class MyPageControl {
 	private Tab tabSecurity;
 
 	@FXML
-	private Label labelPassword;//修改密码错误提示信息
+	private Label labelPassword;// 修改密码错误提示信息
 	@FXML
 	private TextField tfNewpassword;
 
@@ -92,7 +101,7 @@ public class MyPageControl {
 	private Button btLastname;
 
 	@FXML
-	private Text TextName;//Jon Snow
+	private Text TextName;// Jon Snow
 
 	@FXML
 	private Button btEmail;
@@ -102,13 +111,41 @@ public class MyPageControl {
 		setOriginalInformation();
 		textAreaListener();
 		genderListener();
+
+		// webview
+		webEngine = webview.getEngine();
+		webEngine.load("https://www.bbcearth.com");
+	}
+
+	// 用户上传照片
+	@FXML
+	void upLoadPhoto(ActionEvent event) {
+
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("上传我的头像");
+		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
+		
+		fileChooser.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"), 
+				new FileChooser.ExtensionFilter("PNG", "*.png"));
+		
+		// Image img = new Image("file:C:/Users/pc/Desktop/login.jpg");
+		// System.out.println(file.toURI().toString());
+		
+		Image img = new Image(file.toURI().toString());
+		clientPhoto.setImage(img);
+
+		// 将图片录入数据库
+
 	}
 
 	// 根据当前用户，设定界面初始信息
 	private void setOriginalInformation() {
 		Client c = Data.currentClient;
-		//大标题-客户名字
-		this.TextName.setText(c.getFirstName()+" "+c.getLastName());
+		// 大标题-客户名字
+		this.TextName.setText(c.getFirstName() + " " + c.getLastName());
 		// 左边三个textArea
 		this.taMyJob.setText(c.getMyJob());
 		this.taMySkill.setText(c.getMySkill());
@@ -119,9 +156,9 @@ public class MyPageControl {
 		this.tfAddress.setText(c.getAddress());
 		this.tfEmail.setText(c.getEmail());
 		this.tfBirthday.setText(c.getBirthday());
-		
-		//从数据库调入用户照片--没写完
-		//app.App.getSQLDemo().readClientImageFromDB(c.getAccount());
+
+		// 从数据库调入用户照片--没写完
+		// app.App.getSQLDemo().readClientImageFromDB(c.getAccount());
 
 		int gen = c.getGender();
 		if (gen == 1) {
@@ -129,7 +166,7 @@ public class MyPageControl {
 		} else {
 			this.rbFemale.setSelected(true);
 		}
-        //修改密码提示信息置空
+		// 修改密码提示信息置空
 		this.labelPassword.setText(" ");
 	}
 
@@ -202,14 +239,14 @@ public class MyPageControl {
 
 	@FXML
 	void clickOnTabpane(MouseEvent event) {
-		//如果离开了改密码界面，提示消息置空
+		// 如果离开了改密码界面，提示消息置空
 		if (this.tabPane.getSelectionModel().getSelectedItem().getId().equals("tabBasic")) {
 			this.labelPassword.setText("");
 		}
 	}
 
 //-------------listener-----------------------
-	//左边三个框
+	// 左边三个框
 	void textAreaListener() {
 		this.taMySkill.textProperty().addListener(o -> {
 			Data.currentClient.setMySkill(this.taMySkill.getText());
@@ -221,7 +258,8 @@ public class MyPageControl {
 			Data.currentClient.setEduBackground(this.taMyEB.getText());
 		});
 	}
-    //radio buttun
+
+	// radio buttun
 	void genderListener() {
 		this.gender.selectedToggleProperty().addListener(o -> {
 			if (this.rbMale.isSelected()) {
