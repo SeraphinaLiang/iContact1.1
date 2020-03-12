@@ -29,16 +29,11 @@ public class GroupCell extends ListCell<String> {
 		this.setGroupName(name);
 		this.setNumber(n);
 		initLayout();
-//		if(ifStar) {
-//			setStar();
-//		}
-//		else {
-//			setUnstar();
-//		}
+  
+	//	System.out.println(img.getUrl());
 	}
 
 	private void initLayout() {
-       // imgV= new ImageView(imgUnStar);
 		imgV.setFitHeight(16);
 		imgV.setFitWidth(16);
 		
@@ -48,12 +43,7 @@ public class GroupCell extends ListCell<String> {
 		right.setPadding(new Insets(5));
 		hbox.getChildren().addAll(imgV, groupName, left, number, right);
 	}
-//	public void setStar() {
-//		imgV.setImage(imgStar);
-//	}
-//    public void setUnstar() {
-//		imgV.setImage(imgUnstar);
-//	}
+
 //------------------------------------------------------------------------------------------------
 
 	public void setGroupName(String gn) {

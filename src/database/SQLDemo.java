@@ -372,7 +372,7 @@ public class SQLDemo {
 				}
 
 			}
-			// 3. inDB=true && isDelete=true-----DB删除改行
+			// 3. inDB=true && isDelete=true-----DB删除该行
 			else if (inDB && isDelete) {
 				PreparedStatement ps = null;
 				String sql;

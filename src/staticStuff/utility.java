@@ -23,38 +23,57 @@ import net.sourceforge.pinyin4j.format.*;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 public class utility {
-
-	//根据联系人ID得到其所在分组
+	
+	// 得到Data.contactList的实际大小---去除delete的
+	public static int getContactListActualSize() {
+		int size=Data.contactList.size();
+		Iterator<Entry<String, ContactPerson>> iter=Data.contactList.entrySet().iterator();
+		while(iter.hasNext()) {
+			Entry<String, ContactPerson> entry = iter.next();
+			ContactPerson c = entry.getValue();
+			if(c.isDelete()) {
+				size--;
+			}
+		}
+		return size;
+	}
+	
+	// 根据联系人ID得到其所在分组
 	public static String getGroupnameWithLinkmanID(String id) {
-		StringBuffer outcome=new StringBuffer();
+		StringBuffer outcome = new StringBuffer();
 		Iterator<Connect> iter = Data.connectList.iterator();
 		while (iter.hasNext()) {
 			Connect con = iter.next();
-			if (con.getLinkmanID().equals(id)) {
-				outcome.append(con.getGroupName()+",");
+			if (!con.isDelete()) {
+				if (con.getLinkmanID().equals(id)) {
+					outcome.append(con.getGroupName() + ",");
+				}
 			}
+
 		}
 		return outcome.toString();
 	}
-	
+
 	public static void deleteConnectWithGroupname(String groupName) {
 		// 存放需要删除的对象
-		ArrayList<Connect> delete=new ArrayList<>();
-		
+		ArrayList<Connect> delete = new ArrayList<>();
+
 		Iterator<Connect> iter = Data.connectList.iterator();
 		while (iter.hasNext()) {
 			Connect con = iter.next();
 			if (con.getGroupName().equals(groupName)) {
 				// Data.connectList.remove(con);
 				delete.add(con);
+				con.setDelete(true);
 			}
 		}
-		
-		Iterator<Connect> i=delete.iterator();
-		while(i.hasNext()) {
-			Connect con = i.next();
-			Data.connectList.remove(con);
-		}
+
+//		Iterator<Connect> i=delete.iterator();
+//		while(i.hasNext()) {
+//			Connect con = i.next();
+//			con.setDelete(true);
+//			Data.connectList.remove(con);
+//		}
 	}
 
 	// 根据contactPerson(id)删除所有connect,相应的Group人数减一
@@ -75,13 +94,14 @@ public class utility {
 				Group g = Data.groupsList.get(groupName);
 				g.setNumberOfPeople(g.getNumberOfPeople() - 1);
 				// Data.connectList.remove(con);
+				con.setDelete(true);
 				delete[i] = Data.connectList.indexOf(con);
 				i++;
 			}
 		}
-		for (int j = 0; j < i; j++) {
-			Data.connectList.remove(delete[j]);
-		}
+//		for (int j = 0; j < i; j++) {
+//			Data.connectList.remove(delete[j]);
+//		}
 	}
 
 	// 查找并返回未分组联系人--button(Ungrouped)
@@ -94,9 +114,11 @@ public class utility {
 		Iterator<Connect> iterator = Data.connectList.iterator();
 		while (iterator.hasNext()) {
 			Connect con = iterator.next();
-			if (allPeople.containsKey(con.getLinkmanID())) {
-				// 去掉有组的
-				allPeople.remove(con.getLinkmanID());
+			if (!con.isDelete()) {
+				if (allPeople.containsKey(con.getLinkmanID())) {
+					// 去掉有组的
+					allPeople.remove(con.getLinkmanID());
+				}
 			}
 		}
 		// 遍历剩下的All People
@@ -104,9 +126,12 @@ public class utility {
 		while (iter.hasNext()) {
 			Entry<String, ContactPerson> entry = iter.next();
 			ContactPerson c = entry.getValue();
-			PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(), "non");
-			cell.setTheId(c.getId());
-			personList.add(cell);
+			if (!c.isDelete()) {
+				PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(), "non");
+				cell.setTheId(c.getId());
+				personList.add(cell);
+			}
+
 		}
 		return personList;
 	}
@@ -123,9 +148,12 @@ public class utility {
 				String id = con.getLinkmanID();
 				// 找到这个联系人
 				ContactPerson c = Data.contactList.get(id);
-				PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(), groupName);
-				cell.setTheId(c.getId());
-				personList.add(cell);
+				if (!c.isDelete()) {
+					PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(),
+							groupName);
+					cell.setTheId(c.getId());
+					personList.add(cell);
+				}
 			}
 		}
 		return personList;
@@ -141,8 +169,10 @@ public class utility {
 		while (iter.hasNext()) {
 			Entry<String, ContactPerson> entry = iter.next();
 			ContactPerson c = entry.getValue();
-			if (info.contains(c.getName())) {
-				cp = c;
+			if (!c.isDelete()) {
+				if (info.contains(c.getName())) {
+					cp = c;
+				}
 			}
 		}
 		return cp;
@@ -160,46 +190,49 @@ public class utility {
 			Entry<String, ContactPerson> entry = iter.next();
 			ContactPerson c = entry.getValue();
 
-			if (c.getName().contains(info)) {
-				list.add(c.getName());
-				// System.out.println("1." + c.getName());
-				continue;
-			}
-			if (getPingYin(c.getName()).contains(info)) {
-				list.add(c.getName());
-				// System.out.println("2." + c.getName());
-				continue;
-			}
-			if (getPinYinHeadChar(c.getName()).contains(info)) {
-				list.add(c.getName());
-				// System.out.println("3." + c.getName());
-				continue;
-			}
-			if (c.getPhone() != null) {
-				if (c.getPhone().contains(info)) {
-					list.add(c.getName() + " " + c.getPhone());
-					// System.out.println(c.getName() + " " + c.getPhone());
+			if (!c.isDelete()) {
+				if (c.getName().contains(info)) {
+					list.add(c.getName());
+					// System.out.println("1." + c.getName());
 					continue;
 				}
-			}
-			if (c.getTelephone() != null) {
-				if (c.getTelephone().contains(info)) {
-					list.add(c.getName() + " " + c.getTelephone());
-					// System.out.println(c.getName() + " " + c.getTelephone());
+				if (getPingYin(c.getName()).contains(info)) {
+					list.add(c.getName());
+					// System.out.println("2." + c.getName());
 					continue;
 				}
+				if (getPinYinHeadChar(c.getName()).contains(info)) {
+					list.add(c.getName());
+					// System.out.println("3." + c.getName());
+					continue;
+				}
+				if (c.getPhone() != null) {
+					if (c.getPhone().contains(info)) {
+						list.add(c.getName() + " " + c.getPhone());
+						// System.out.println(c.getName() + " " + c.getPhone());
+						continue;
+					}
+				}
+				if (c.getTelephone() != null) {
+					if (c.getTelephone().contains(info)) {
+						list.add(c.getName() + " " + c.getTelephone());
+						// System.out.println(c.getName() + " " + c.getTelephone());
+						continue;
+					}
+				}
+				if (list.size() > 5) {// 最多查找五个匹配项
+					break;
+				}
 			}
-			if (list.size() > 5) {// 最多查找五个匹配项
-				break;
-			}
+
 		}
-		
+
 		ObservableList<String> outcome = null;
 		if (list.size() != 0) {
 			outcome = FXCollections.observableArrayList(list);
 		}
-		
-		Collections.sort(outcome,new NameComparator());
+
+		Collections.sort(outcome, new NameComparator());
 		return outcome;
 	}
 
@@ -267,5 +300,5 @@ public class utility {
 		}
 		return convert;
 	}
-	
+
 }

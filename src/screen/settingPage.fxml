@@ -1,10 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="826.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.settingPageControl">
-	<!-- TODO Add Nodes -->
+   <children>
+      <GridPane layoutX="47.0" layoutY="26.0" prefHeight="564.0" prefWidth="752.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="335.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="438.0" minWidth="10.0" prefWidth="417.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/iphone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="188.0" prefWidth="338.0" GridPane.rowIndex="1">
+               <children>
+                  <Button layoutX="14.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/imac.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="70.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Save To" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/img/imac.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#f9ffc2" height="192.0" stroke="#615b5b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="10.0" width="373.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Pane prefHeight="226.0" prefWidth="341.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Text fill="#53572f" layoutX="57.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danger Zone" wrappingWidth="124.3603515625">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="37.0" fitWidth="29.0" layoutX="21.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/img/problem.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="57.0" layoutY="108.0" prefHeight="25.0" prefWidth="270.0" text="Enter your password to delete your account !" textFill="#575327" wrapText="true">
+                     <font>
+                        <Font name="Comic Sans MS" size="12.0" />
+                     </font></Label>
+                  <TextField layoutX="57.0" layoutY="150.0" prefHeight="36.0" prefWidth="144.0" promptText="password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="209.0" layoutY="150.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="132.0" style="-fx-background-color: #615b5b;" text="Delete comfirm" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
+   </children>
 </AnchorPane>

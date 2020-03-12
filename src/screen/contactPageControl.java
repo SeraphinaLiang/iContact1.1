@@ -142,7 +142,7 @@ public class contactPageControl implements Initializable {
 
 	// 界面初始化
 	void init() {
-		this.btAllContact.setText("All Contacts (" + Data.contactList.size() + ")");
+		this.btAllContact.setText("All Contacts (" + utility.getContactListActualSize() + ")");
 		this.btUngroup.setText("Ungrouped (" + utility.searchUngroupedContacts().size() + ")");
 		this.currentGroup = "AllContacts";
 		this.currentClient = Data.currentClient.getAccount();
@@ -152,7 +152,7 @@ public class contactPageControl implements Initializable {
 
 	// 刷新界面
 	void repaint() {
-		this.btAllContact.setText("All Contacts (" + Data.contactList.size() + ")");
+		this.btAllContact.setText("All Contacts (" + utility.getContactListActualSize() + ")");
 		this.btUngroup.setText("Ungrouped (" + utility.searchUngroupedContacts().size() + ")");
 		this.initGroupCell();// 刷新group listview
 		// 根据当前group刷新person listview
@@ -253,7 +253,7 @@ public class contactPageControl implements Initializable {
 			this.tfgroupName.setPromptText("group name");
 		} else if (this.tfgroupName.isEditable()) {
 			String groupName = this.tfgroupName.getText();
-			if (groupName != null) {
+			if (groupName != null && !groupName.equals("")) {
 				// 已存在该组组名
 				if (Data.groupsList.containsKey(groupName)) {
 					this.taddGroupNotice.setText("The group already exists.");
@@ -277,7 +277,8 @@ public class contactPageControl implements Initializable {
 			if (!this.currentGroup.equals("AllContacts") && !this.currentGroup.equals("Ungroup")) {
 				String groupName = this.currentGroup;
 				utility.deleteConnectWithGroupname(groupName);
-				Data.groupsList.remove(groupName);
+			//	Data.groupsList.remove(groupName);
+				Data.groupsList.get(groupName).setDelete(true);
 				this.currentGroup = null;
 				repaint();
 			}
@@ -331,7 +332,10 @@ public class contactPageControl implements Initializable {
 			ContactPerson cp = Data.contactList.get(cell.getTheId());
 			if (this.currentGroup.equals("AllContacts") || this.currentGroup.equals("Ungroup")) {
 				// 删除所有connect 和这个 contactPerson
-				Data.contactList.remove(cp.getId());
+				
+			//	Data.contactList.remove(cp.getId());
+				Data.contactList.get(cp.getId()).setDelete(true);
+				
 				utility.deleteConnectWithLinkmanID(cp.getId());
 				repaint();
 			} else {
@@ -342,7 +346,9 @@ public class contactPageControl implements Initializable {
 				while (iter.hasNext()) {
 					Connect con = iter.next();
 					if (con.getGroupName().equals(groupName) && con.getLinkmanID().equals(id)) {
-						Data.connectList.remove(con);
+						
+						con.setDelete(true);
+						//Data.connectList.remove(con);
 						// 该组人数减一
 						Group p = Data.groupsList.get(groupName);
 						p.setNumberOfPeople(p.getNumberOfPeople() - 1);
@@ -366,23 +372,6 @@ public class contactPageControl implements Initializable {
 	void showUngroup(ActionEvent event) {
 		this.currentGroup = "Ungroup";
 		toShowUngroup();
-//		ContactPerson.setCellFactory(new Callback<ListView<PersonCell>, ListCell<PersonCell>>() {
-//			@Override
-//			public ListCell<PersonCell> call(ListView<PersonCell> arg0) {
-//				ListCell<PersonCell> cell = new ListCell<PersonCell>() {
-//					@Override
-//					protected void updateItem(PersonCell n, boolean bt) {
-//						super.updateItem(n, bt);
-//						if (n != null) {
-//							setGraphic(n.getHbox());
-//						}
-//					}
-//				};
-//				return cell;
-//			}
-//
-//		});
-//		ContactPerson.setItems(utility.searchUngroupedContacts());
 	}
 
 	void toShowUngroup() {
