@@ -51,6 +51,7 @@ import staticStuff.SceneControl;
 import staticStuff.utility;
 
 public class contactPageControl implements Initializable {
+
 	@FXML
 	private ResourceBundle resources;
 	@FXML
@@ -139,6 +140,9 @@ public class contactPageControl implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		// 解决不在DB里面的联系人无法插入图片的问题
+		app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
+		// --------------------
 		init();
 		this.initGroupCell();
 		this.initPersonCell();// 全部联系人
@@ -146,25 +150,26 @@ public class contactPageControl implements Initializable {
 		selectGroupListener();
 		selectPersonListener();
 	}
-	
-	//上传照片
+
+	// 上传照片
 	@FXML
-    void uploadPhoto(ActionEvent event) {
-		//选择文件
+	void uploadPhoto(ActionEvent event) {
+		// 选择文件
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("上传联系人的照片");
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-		File file =fileChooser.showOpenDialog(app.App.getPrimaryStage());
-		
+		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
+
 		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
 				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
-		
-        //更新界面
-		Image img = new Image(file.toURI().toString());	
+
+		// 更新界面
+		Image img = new Image(file.toURI().toString());
 		photo.setImage(img);
-		//导入数据库
-		
-    }
+		// 导入数据库
+		app.App.getSQLDemo().putLinkmanPhotoWithPath(file.getAbsolutePath(), this.currentPerson);
+		System.out.println("上传成功");
+	}
 
 	// 界面初始化
 	void init() {
@@ -241,6 +246,8 @@ public class contactPageControl implements Initializable {
 		this.tfemerNumber.clear();
 		this.tfppostcode.clear();
 		this.tfphomepage.clear();
+		Image defaultImg = new Image("file:resources/img/irish.png");
+		this.photo.setImage(defaultImg);
 	}
 
 	// 更改当前联系人信息
@@ -319,7 +326,7 @@ public class contactPageControl implements Initializable {
 		// currentPerson=null
 		if (this.currentPerson == null) {
 			// 从界面获取输入，新建对象
-			if (this.tfpname.getText() != null) {
+			if (!this.tfpname.getText().isEmpty()) {
 				int i = (int) (Math.random() * 11 + Math.random() * 22 + this.tfpname.getText().hashCode());
 				cp = new ContactPerson(i, this.tfpname.getText(), false);
 				cp.setTelephone(this.tfptelephone.getText());
@@ -346,6 +353,8 @@ public class contactPageControl implements Initializable {
 			this.currentPerson = cp.getId();
 			// 刷新界面
 			repaint();
+			// 解决不在DB里面的联系人无法插入图片的问题
+			app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
 		}
 	}
 
@@ -386,6 +395,7 @@ public class contactPageControl implements Initializable {
 				}
 			}
 		}
+		toClearTextfield();
 	}
 
 	// 显示所有联系人
@@ -539,11 +549,26 @@ public class contactPageControl implements Initializable {
 	// 更新联系人详细资料---图片还没加
 	void refreshDetailInformation(ContactPerson cp) {
 		// 从数据库中读取该联系人照片，位置resources/linkmanPhoto/id.jpg TODO
-		//如果没有照片，则用DEFAULT IMG
+		// 如果没有照片，则用DEFAULT IMG
+
+			app.App.getSQLDemo().readLinkmanImageFromDB(currentPerson);
+			Image img = new Image("file:resources/linkmanPhoto/" + this.currentPerson + ".jpg");
+			this.photo.setImage(img);
+			
+			if (img.getHeight() < 0.1) {
+				//删除错误导入文件 TODO
+				File f=new File("resources/linkmanPhoto/" + this.currentPerson + ".jpg");
+				if(f.exists()) {
+					f.delete();
+				}
+				//设置默认头像
+				Image defaultImg = new Image("file:resources/img/irish.png");
+				this.photo.setImage(defaultImg);
+			}
+			System.out.println("ID" + this.currentPerson + "照片：" + img.getUrl().toString());
 		
-		
-		
-		// app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
+
+		// ---------------------------------------------------------
 		this.tfpname.setText(cp.getName());
 		this.tfpphone.setText(cp.getPhone());
 		this.tfptelephone.setText(cp.getTelephone());

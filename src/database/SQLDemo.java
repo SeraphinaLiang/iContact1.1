@@ -721,6 +721,87 @@ public class SQLDemo {
 	/**
 	 * 每个用户的图片根据account命名， linkman的图片根据id命名(假设只有一张照片)
 	 */
+	// 将图片插入数据库（用户，图片路径）图片大小小于4M
+	public void putClientPhotoWithPath(String path,String account) {
+	//	String path = "resources/clientPhoto/" + account + ".jpg"; // 需要插入的图片路径
+
+		PreparedStatement ps = null;
+		FileInputStream in = null;
+		try {
+			in = ImageUtil.readImage(path);
+
+			String sql = "update client set photo=? where account= ? ;";
+			ps = conn.prepareStatement(sql);
+			ps.setBinaryStream(1, in, in.available()); // 第三个？，inputStream，可读剩余字节长
+			ps.setString(2, account);
+			// ps.setString(1, account); //第一个？，插入的值
+			// ---------------------------------------
+			/**
+			 * 函数解释 void setBinaryStream​(int parameterIndex, InputStream x, int length)
+			 * 
+			 */
+			// ----------------------------------------
+			int count = ps.executeUpdate();
+			if (count > 0) {
+				System.out.println("插入成功！");
+			} else {
+				System.out.println("插入失败！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			if (null != ps) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	// 将图片插入数据库（联系人，图片路径）图片大小小于4M
+	public void putLinkmanPhotoWithPath(String path,String id) {
+		//String path = "resources/linkmanPhoto/" + id + ".jpg"; // 需要插入的图片路径
+
+		PreparedStatement ps = null;
+		FileInputStream in = null;
+		try {
+			in = ImageUtil.readImage(path);
+
+			String sql = "update linkman set photo = ? where id= ? ;";
+			ps = conn.prepareStatement(sql);
+			ps.setBinaryStream(1, in, in.available()); // 第三个？，inputStream，可读剩余字节长
+            ps.setString(2, id);
+			// ps.setString(1, account); //第一个？，插入的值
+			// ---------------------------------------
+			/**
+			 * 函数解释 void setBinaryStream​(int parameterIndex, InputStream x, int length)
+			 * 
+			 */
+			// ----------------------------------------
+			int count = ps.executeUpdate();
+			if (count > 0) {
+				System.out.println("插入成功！");
+			} else {
+				System.out.println("插入失败！");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			if (null != ps) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	
 	// 将图片插入数据库(用户) 图片大小小于4M
 	public void writeClientImageToDB(String account) {
 		String path = "resources/clientPhoto/" + account + ".jpg"; // 需要插入的图片路径
@@ -818,7 +899,7 @@ public class SQLDemo {
 				ImageUtil.readBin2Image(in, targetPath);
 			}
 			// -----------------------------------------------------
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (rs != null) {
@@ -855,9 +936,10 @@ public class SQLDemo {
 				ImageUtil.readBin2Image(in, targetPath);
 			}
 			// -----------------------------------------------------
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			if (rs != null) {
 				try {
 					rs.close();
@@ -874,4 +956,5 @@ public class SQLDemo {
 			}
 		}
 	}
+	
 }

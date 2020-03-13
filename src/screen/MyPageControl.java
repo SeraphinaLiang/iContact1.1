@@ -108,13 +108,30 @@ public class MyPageControl {
 
 	@FXML
 	void initialize() {
+		app.App.getSQLDemo().saveClientToDB();//解决初次登录不能插入照片
+		
 		setOriginalInformation();
 		textAreaListener();
 		genderListener();
+        //从数据库导入该用户照片
+		getPhotoFromDB();
 
 		// webview
 		webEngine = webview.getEngine();
 		webEngine.load("https://www.bbcearth.com");
+	}
+	
+	void getPhotoFromDB() {
+		// 从数据库调入用户照片resources/clientPhoto/" + account + ".jpg";
+		app.App.getSQLDemo().readClientImageFromDB(Data.currentClient.getAccount());
+		Image img = new Image("file:resources/clientPhoto/" + Data.currentClient.getAccount() + ".jpg");
+		this.clientPhoto.setImage(img);
+
+	//	System.out.println(this.clientPhoto.getImage().getHeight());
+		if (this.clientPhoto.getImage().getHeight()<1.0) {
+			Image defaultImg = new Image("file:resources/img/irish.png");
+			this.clientPhoto.setImage(defaultImg);
+		}
 	}
 
 	// 用户上传照片
@@ -125,19 +142,21 @@ public class MyPageControl {
 		fileChooser.setTitle("上传我的头像");
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
-		
+
 		fileChooser.getExtensionFilters().addAll(
-				new FileChooser.ExtensionFilter("All Images", "*.*"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg"), 
-				new FileChooser.ExtensionFilter("PNG", "*.png"));
-		
+				 new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg")
+		,new FileChooser.ExtensionFilter("PNG", "*.png")
+		);
+
 		// Image img = new Image("file:C:/Users/pc/Desktop/login.jpg");
 		// System.out.println(file.toURI().toString());
-		
-		Image img = new Image(file.toURI().toString());
-		clientPhoto.setImage(img);
+
+		Image image = new Image(file.toURI().toString());
+		clientPhoto.setImage(image);
 
 		// 将图片录入数据库
+		app.App.getSQLDemo().putClientPhotoWithPath(file.getAbsolutePath(), Data.currentClient.getAccount());
 
 	}
 

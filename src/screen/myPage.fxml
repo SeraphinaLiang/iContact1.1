@@ -20,27 +20,35 @@
          <children>
             <VBox prefHeight="645.0" prefWidth="243.0">
                <children>
-                  <ImageView fx:id="clientPhoto" fitHeight="203.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="clientPhoto" fitHeight="180.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/img/leprechaun%20(2).png" />
                      </image>
                      <VBox.margin>
-                        <Insets bottom="15.0" left="20.0" top="15.0" />
+                        <Insets bottom="15.0" left="34.0" top="15.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button fx:id="btUpLoadPhoto" mnemonicParsing="false" onAction="#upLoadPhoto" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                  <Text fill="#5e5454" opacity="0.49" strokeType="OUTSIDE" strokeWidth="0.0" text="图片大小小于4M（仅支持jpg格式）" wrappingWidth="194.3603515625">
+                     <font>
+                        <Font name="Microsoft YaHei" size="12.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets left="40.0" />
+                        <Insets bottom="5.0" left="40.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Button fx:id="btUpLoadPhoto" mnemonicParsing="false" onAction="#upLoadPhoto" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: #F08080;" text="upload photo" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="50.0" />
                      </VBox.margin>
                      <graphic>
-                        <ImageView disable="true" fitHeight="29.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/img/irish.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="Corbel" size="18.0" />
+                        <Font name="Corbel" size="15.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

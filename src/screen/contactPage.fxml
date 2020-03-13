@@ -237,6 +237,11 @@
                      </children>
                   </HBox>
                   <Separator opacity="0.62" prefHeight="10.0" prefWidth="614.0" />
+                  <Text fill="#614343" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="先新建联系人，再上传照片。" wrappingWidth="165.0">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
                   <Pane prefHeight="322.0" prefWidth="614.0">
                      <children>
                         <ImageView fx:id="photo" fitHeight="127.0" fitWidth="123.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true">
@@ -535,6 +540,11 @@
                         <Text fx:id="addToGroupNotice" fill="#806969" layoutX="147.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.0">
                            <font>
                               <Font name="Corbel" size="10.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#614343" layoutX="37.0" layoutY="175.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="图片大小小于4M （仅支持jpg格式）" wrappingWidth="88.0">
+                           <font>
+                              <Font size="10.0" />
                            </font>
                         </Text>
                      </children></Pane>

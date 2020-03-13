@@ -1,5 +1,7 @@
 package basic;
 
+import javafx.scene.image.Image;
+
 public class Client {
 
 	private String firstName;
@@ -32,6 +34,7 @@ public class Client {
 		this.birthday = birthday;
 		this.gender = gender;
 		this.inDB=inDB;
+		
 	}
 	
 	public void print() {
