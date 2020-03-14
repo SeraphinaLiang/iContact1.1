@@ -46,7 +46,7 @@ public class utility {
 			Connect con = iter.next();
 			if (!con.isDelete()) {
 				if (con.getLinkmanID().equals(id)) {
-					outcome.append(con.getGroupName() + ",");
+					outcome.append(con.getGroupName() + "]");
 				}
 			}
 

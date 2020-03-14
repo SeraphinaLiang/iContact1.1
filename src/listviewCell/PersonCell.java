@@ -21,11 +21,32 @@ public class PersonCell extends ListCell<String>{
 	private ImageView imgV=new ImageView(img); 
 
 	public PersonCell(String name,String email,String phone,String address,String currentGroup) {
-		this.name.setText(String.format("%-25s", " "+name));
-		this.email.setText(String.format("%-25s", email));
-		this.phone.setText(String.format("%-25s", phone));
-		this.address.setText(String.format("%-20s", address));
-		this.currentGroup.setText(currentGroup);
+		this.name.setText(String.format("%-20s", " "+name));
+		
+		if(email.equals("")) {
+			this.email.setText("                      ");
+		}else {
+			this.email.setText(String.format("%-20s", " "+email));
+		}
+	
+		if(phone.equals("")) {
+			this.phone.setText("                  ");
+		}else {
+			this.phone.setText(String.format("%-22s", " "+phone));
+		}
+		
+		if(address.equals("")) {
+			this.address.setText("                      ");
+		}else {
+			this.address.setText(String.format("%-22s", " "+address));
+		}
+		
+		if(currentGroup.equals("")) {
+			this.currentGroup.setText("              ");
+		}else {
+			this.currentGroup.setText("["+currentGroup);
+		}
+		
 	
 		imgV.setFitHeight(15);
 		imgV.setFitWidth(15);

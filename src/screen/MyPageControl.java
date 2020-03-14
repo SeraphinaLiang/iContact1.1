@@ -195,12 +195,14 @@ public class MyPageControl {
 	void changeFirstname(ActionEvent event) {
 		Data.currentClient.setFirstName(this.tfFirstname.getText());
 		this.tfFirstname.setText(this.tfFirstname.getText());
+		this.TextName.setText(this.tfFirstname.getText()+" "+Data.currentClient.getLastName());
 	}
 
 	@FXML
 	void changeLastname(ActionEvent event) {
 		Data.currentClient.setLastName(this.tfLastname.getText());
 		this.tfLastname.setText(this.tfLastname.getText());
+		this.TextName.setText(Data.currentClient.getFirstName()+" "+this.tfLastname.getText());
 	}
 
 	@FXML
