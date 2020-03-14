@@ -551,13 +551,13 @@ public class contactPageControl implements Initializable {
 		// 从数据库中读取该联系人照片，位置resources/linkmanPhoto/id.jpg TODO
 		// 如果没有照片，则用DEFAULT IMG
 
-			app.App.getSQLDemo().readLinkmanImageFromDB(currentPerson);
-			Image img = new Image("file:resources/linkmanPhoto/" + this.currentPerson + ".jpg");
+			app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
+			Image img = new Image("file:resources/linkmanPhoto/" + cp.getId() + ".jpg");
 			this.photo.setImage(img);
 			
 			if (img.getHeight() < 0.1) {
 				//删除错误导入文件 TODO
-				File f=new File("resources/linkmanPhoto/" + this.currentPerson + ".jpg");
+				File f=new File("resources/linkmanPhoto/" + cp.getId() + ".jpg");
 				if(f.exists()) {
 					f.delete();
 				}
@@ -565,8 +565,10 @@ public class contactPageControl implements Initializable {
 				Image defaultImg = new Image("file:resources/img/irish.png");
 				this.photo.setImage(defaultImg);
 			}
-			System.out.println("ID" + this.currentPerson + "照片：" + img.getUrl().toString());
-		
+		   
+			System.out.println(cp.getName());
+			System.out.print("ID" + cp.getId() + "照片：" + img.getUrl().toString());
+		   
 
 		// ---------------------------------------------------------
 		this.tfpname.setText(cp.getName());
