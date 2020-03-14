@@ -11,7 +11,7 @@ public class NameComparator implements Comparator{
 		String name1=utility.getPingYin(s1);
 		String name2=utility.getPingYin(s2);
 		
-		return name1.compareTo(name2);
+		return name1.compareToIgnoreCase(name2);
 	}
 
 	

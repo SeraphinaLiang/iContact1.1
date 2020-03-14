@@ -1,6 +1,7 @@
 package staticStuff;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -196,30 +197,35 @@ public class utility {
 			if (!c.isDelete()) {
 				if (c.getName().contains(info)) {
 					list.add(c.getName());
-					// System.out.println("1." + c.getName());
 					continue;
 				}
+				if ((c.getName().toUpperCase()).contains(info)) {
+					list.add(c.getName());
+					continue;
+				}
+				if ((c.getName().toLowerCase()).contains(info)) {
+					list.add(c.getName());
+					continue;
+				}
+				//----------------------------------
 				if (getPingYin(c.getName()).contains(info)) {
 					list.add(c.getName());
-					// System.out.println("2." + c.getName());
 					continue;
 				}
 				if (getPinYinHeadChar(c.getName()).contains(info)) {
 					list.add(c.getName());
-					// System.out.println("3." + c.getName());
 					continue;
 				}
+				//-----------------------------------
 				if (c.getPhone() != null) {
 					if (c.getPhone().contains(info)) {
 						list.add(c.getName() + " " + c.getPhone());
-						// System.out.println(c.getName() + " " + c.getPhone());
 						continue;
 					}
 				}
 				if (c.getTelephone() != null) {
 					if (c.getTelephone().contains(info)) {
 						list.add(c.getName() + " " + c.getTelephone());
-						// System.out.println(c.getName() + " " + c.getTelephone());
 						continue;
 					}
 				}
@@ -234,8 +240,47 @@ public class utility {
 		if (list.size() != 0) {
 			outcome = FXCollections.observableArrayList(list);
 		}
-
 		Collections.sort(outcome, new NameComparator());
+		//------------------------------------------------
+		//根据首字母分类
+		String[] tiger=new String[outcome.size()];//old
+		String[] lion=new String[outcome.size()];//new
+		
+		int count=0;
+		Iterator<String> money=outcome.iterator();
+		while(money.hasNext()) {
+			tiger[count]=money.next();
+			count++;
+		}
+		
+		if(tiger.length!=0) {
+			lion[0]="1."+tiger[0];
+		}
+		
+		if(tiger.length>1) {
+			int n=1;//第n+1个元素
+			int order=1;//分类标号
+			while(n<count) {
+				char c1=tiger[n].toLowerCase().charAt(0);
+				char c2=tiger[n-1].toLowerCase().charAt(0);
+				if(c1==c2) {
+					lion[n]=order+"."+tiger[n];
+				}else {
+					order++;
+					lion[n]=order+"."+tiger[n];
+				}
+				n++;
+			}
+		}
+		for(int i=0;i<tiger.length;i++) {
+			System.out.println("tiger list:"+tiger[i]);
+		}
+		for(int i=0;i<lion.length;i++) {
+			System.out.println("lion list:"+lion[i]);
+		}
+		
+		outcome=FXCollections.observableArrayList(Arrays.asList(lion));
+		
 		return outcome;
 	}
 

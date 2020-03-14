@@ -3,6 +3,7 @@ package screen;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -458,31 +459,11 @@ public class contactPageControl implements Initializable {
 		try {
 			this.cbSearch.getEditor().textProperty().addListener(o -> {
 				String input = this.cbSearch.getEditor().getText();
-				this.cbSearch.setVisibleRowCount(5);// combo能显示多少行
+	//			this.cbSearch.setVisibleRowCount(5);// combo能显示多少行
 				if (input.length() != 0) {
 					try {
 						ObservableList<String> outcome = utility.enquiryContact(input);
 						if (outcome.size() != 0) {
-							// 对搜索结果按照姓名分类
-//							Iterator<String> iter = outcome.iterator();
-//							String s1 = iter.next();
-//							String c1 = utility.getPingYin(s1.substring(0, 0));
-//							cbSearch.getItems().add(s1);
-//							
-//							while (iter.hasNext()) {
-//								String s2 = iter.next();
-//								String c2 = utility.getPingYin(s2.substring(0, 0));
-//								
-//								if (c2.equals(c1)) {
-//									cbSearch.getItems().add(s2);
-//									s1=s2;c1=c2;		
-//								} else {
-//									cbSearch.getItems().add(new Separator());
-//									cbSearch.getItems().add(s2);
-//									s1=s2;c1=c2;
-//								}
-//							}
-
 							cbSearch.setItems(outcome);
 						}
 					} catch (Exception e) {
@@ -546,7 +527,7 @@ public class contactPageControl implements Initializable {
 		}
 	}
 
-	// 更新联系人详细资料---图片还没加
+	// 更新联系人详细资料
 	void refreshDetailInformation(ContactPerson cp) {
 		// 从数据库中读取该联系人照片，位置resources/linkmanPhoto/id.jpg TODO
 		// 如果没有照片，则用DEFAULT IMG

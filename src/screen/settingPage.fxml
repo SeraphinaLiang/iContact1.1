@@ -25,16 +25,16 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btConnectPhone" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#connectToPhone" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
+                  <Button fx:id="btConnectPhone" layoutX="14.0" layoutY="41.0" mnemonicParsing="false" onAction="#connectToPhone" prefHeight="43.0" prefWidth="216.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/img/iphone.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="16.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -44,12 +44,12 @@
             </Pane>
             <Pane prefHeight="188.0" prefWidth="338.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="btUpload" layoutX="14.0" mnemonicParsing="false" onAction="#upload" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">
+                  <Button fx:id="btUpload" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#upload" prefHeight="43.0" prefWidth="132.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/img/imac.png" />
                            </image>
@@ -59,12 +59,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btSave" layoutX="14.0" layoutY="70.0" mnemonicParsing="false" onAction="#save" prefHeight="49.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Save To" textFill="WHITE">
+                  <Button fx:id="btSave" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" onAction="#save" prefHeight="43.0" prefWidth="132.0" style="-fx-background-color: #F08080;" text=" Save To" textFill="WHITE">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="16.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="37.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../resources/img/imac.png" />
                            </image>
@@ -74,6 +74,16 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Text fill="#796060" layoutX="156.0" layoutY="27.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="从本地导入联系人名片（格式CSV或VCard）" wrappingWidth="132.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#796060" layoutX="156.0" layoutY="101.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="将通讯录保存至本地 （格式CSV或VCard）" wrappingWidth="132.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#f9ffc2" height="192.0" stroke="#615b5b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="10.0" width="373.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
