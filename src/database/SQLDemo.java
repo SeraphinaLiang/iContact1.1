@@ -763,7 +763,7 @@ public class SQLDemo {
 	
 	// 将图片插入数据库（联系人，图片路径）图片大小小于4M
 	public void putLinkmanPhotoWithPath(String path,String id) {
-		//String path = "resources/linkmanPhoto/" + id + ".jpg"; // 需要插入的图片路径
+		//String path = "resources/linkmanPhoto/" + id + ".jpeg"; // 需要插入的图片路径
 
 		PreparedStatement ps = null;
 		FileInputStream in = null;
@@ -804,7 +804,7 @@ public class SQLDemo {
 	
 	// 将图片插入数据库(用户) 图片大小小于4M
 	public void writeClientImageToDB(String account) {
-		String path = "resources/clientPhoto/" + account + ".jpg"; // 需要插入的图片路径
+		String path = "resources/clientPhoto/" + account + ".png"; // 需要插入的图片路径
 
 		PreparedStatement ps = null;
 		FileInputStream in = null;
@@ -844,7 +844,7 @@ public class SQLDemo {
 
 	// 将图片插入数据库(联系人) 图片大小小于4M
 	public void writeLinkmanImageToDB(String id) {
-		String path = "resources/linkmanPhoto/" + id + ".jpg"; // 需要插入的图片路径
+		String path = "resources/linkmanPhoto/" + id + ".png"; // 需要插入的图片路径
 
 		PreparedStatement ps = null;
 		FileInputStream in = null;
@@ -884,7 +884,7 @@ public class SQLDemo {
 
 	// 读取数据库中图片(用户）
 	public void readClientImageFromDB(String account) {
-		String targetPath = "resources/clientPhoto/" + account + ".jpg"; // 从数据库中读取，放到本地文件夹
+		String targetPath = "resources/clientPhoto/" + account + ".png"; // 从数据库中读取，放到本地文件夹
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
@@ -921,7 +921,7 @@ public class SQLDemo {
 
 	// 读取数据库中图片(联系人）
 	public void readLinkmanImageFromDB(String id) {
-		String targetPath = "resources/linkmanPhoto/" + id + ".jpg"; // 从数据库中读取，放到本地文件夹
+		String targetPath = "resources/linkmanPhoto/" + id + ".png"; // 从数据库中读取，放到本地文件夹
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {

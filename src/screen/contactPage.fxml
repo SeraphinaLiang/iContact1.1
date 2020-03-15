@@ -542,7 +542,7 @@
                               <Font name="Corbel" size="10.0" />
                            </font>
                         </Text>
-                        <Text fill="#614343" layoutX="37.0" layoutY="175.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="图片大小小于4M （仅支持jpg格式）" wrappingWidth="88.0">
+                        <Text fill="#614343" layoutX="42.0" layoutY="175.0" opacity="0.68" strokeType="OUTSIDE" strokeWidth="0.0" text="图片大小小于4M （仅支持png格式）" wrappingWidth="97.0">
                            <font>
                               <Font size="10.0" />
                            </font>

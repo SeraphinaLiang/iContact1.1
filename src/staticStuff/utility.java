@@ -47,7 +47,7 @@ public class utility {
 			Connect con = iter.next();
 			if (!con.isDelete()) {
 				if (con.getLinkmanID().equals(id)) {
-					outcome.append(con.getGroupName() + "]");
+					outcome.append(con.getGroupName() + "@");
 				}
 			}
 
@@ -150,12 +150,15 @@ public class utility {
 					String id = con.getLinkmanID();
 					// 找到这个联系人
 					ContactPerson c = Data.contactList.get(id);
-					if (!c.isDelete()) {
+					if(c!=null) {
+						if (!c.isDelete()) {
 						PersonCell cell = new PersonCell(c.getName(), c.getEmail(), c.getPhone(), c.getAddress(),
 								groupName);
 						cell.setTheId(c.getId());
 						personList.add(cell);
 					}
+					}
+					
 				}
 			}
 

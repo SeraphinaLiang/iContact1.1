@@ -35,7 +35,7 @@ public class PersonCell extends ListCell<String>{
 			this.phone.setText(String.format("%-22s", " "+phone));
 		}
 		
-		if(address.equals("")) {
+		if(address==null) {
 			this.address.setText("                      ");
 		}else {
 			this.address.setText(String.format("%-22s", " "+address));
@@ -44,7 +44,7 @@ public class PersonCell extends ListCell<String>{
 		if(currentGroup.equals("")) {
 			this.currentGroup.setText("              ");
 		}else {
-			this.currentGroup.setText("["+currentGroup);
+			this.currentGroup.setText("@"+currentGroup);
 		}
 		
 	

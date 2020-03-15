@@ -86,7 +86,7 @@
       </HBox>
       <ScrollPane layoutY="45.0" prefHeight="600.0" prefWidth="826.0">
          <content>
-            <WebView fx:id="webView" prefHeight="647.0" prefWidth="829.0" />
+            <WebView fx:id="webView" prefHeight="647.0" prefWidth="818.0" />
          </content>
       </ScrollPane>
    </children>

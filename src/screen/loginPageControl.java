@@ -159,6 +159,7 @@ public class loginPageControl {
 							// 创建Client对象，加入Data
 							Client c = new Client(firstName, lastName, account, password, email, birthday, sex,false);
 							staticStuff.Data.clientList.put(account, c);
+							app.App.getSQLDemo().saveClientToDB();
 
 							// 清空用户输入数据
 							tfFirstname.clear();
@@ -178,10 +179,7 @@ public class loginPageControl {
 							ss.setScene(s);
 							ss.setResizable(false);
 							ss.show();
-//							
-//							//test
-//							Client t=staticStuff.Data.clientList.get(account);
-//							t.print();
+
 						}
 					}
 				}

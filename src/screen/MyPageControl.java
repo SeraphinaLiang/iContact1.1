@@ -124,7 +124,7 @@ public class MyPageControl {
 	void getPhotoFromDB() {
 		// 从数据库调入用户照片resources/clientPhoto/" + account + ".jpg";
 		app.App.getSQLDemo().readClientImageFromDB(Data.currentClient.getAccount());
-		Image img = new Image("file:resources/clientPhoto/" + Data.currentClient.getAccount() + ".jpg");
+		Image img = new Image("file:resources/clientPhoto/" + Data.currentClient.getAccount() + ".png");
 		this.clientPhoto.setImage(img);
 
 	//	System.out.println(this.clientPhoto.getImage().getHeight());

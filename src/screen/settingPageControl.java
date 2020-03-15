@@ -2,6 +2,8 @@ package screen;
 
 import java.io.File;
 import java.io.IOException;
+
+import fileUpDownLoad.VCardHandle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,14 +44,15 @@ public class settingPageControl {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
 
-         fileChooser.getExtensionFilters().addAll(
-                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                 new FileChooser.ExtensionFilter("PNG", "*.png")
-             );
+		fileChooser.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("VCF", "*.vcf"),
+				new FileChooser.ExtensionFilter("CSV", "*.csv"));
 
 		// 输入所选择文件的路径
-		System.out.print(file.getAbsolutePath());
-
+		if(file.getPath().contains(".vcf")) {
+			VCardHandle.readVCard(file.getAbsolutePath());
+		}
+		
 	}
 
 	@FXML
@@ -59,7 +62,7 @@ public class settingPageControl {
 		directoryChooser.setTitle("保存联系人信息至...");
 		File directory = directoryChooser.showDialog(app.App.getPrimaryStage());
 		if (directory != null) {
-			System.out.println(directory.getAbsolutePath());
+			VCardHandle.exportVCardFile(directory.getAbsolutePath());
 		}
 	}
 

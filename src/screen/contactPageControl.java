@@ -161,8 +161,8 @@ public class contactPageControl implements Initializable {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
 
-		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
+		fileChooser.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("JNG", "*.png"));
 
 		// 更新界面
 		Image img = new Image(file.toURI().toString());
@@ -533,12 +533,12 @@ public class contactPageControl implements Initializable {
 		// 如果没有照片，则用DEFAULT IMG
 
 			app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
-			Image img = new Image("file:resources/linkmanPhoto/" + cp.getId() + ".jpg");
+			Image img = new Image("file:resources/linkmanPhoto/" + cp.getId() + ".png");
 			this.photo.setImage(img);
 			
 			if (img.getHeight() < 0.1) {
 				//删除错误导入文件 TODO
-				File f=new File("resources/linkmanPhoto/" + cp.getId() + ".jpg");
+				File f=new File("resources/linkmanPhoto/" + cp.getId() + ".png");
 				if(f.exists()) {
 					f.delete();
 				}
