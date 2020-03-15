@@ -42,11 +42,10 @@ public class settingPageControl {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
 
-//         fileChooser.getExtensionFilters().addAll(
-//                 new FileChooser.ExtensionFilter("All Images", "*.*"),
-//                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-//                 new FileChooser.ExtensionFilter("PNG", "*.png")
-//             );
+         fileChooser.getExtensionFilters().addAll(
+                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                 new FileChooser.ExtensionFilter("PNG", "*.png")
+             );
 
 		// 输入所选择文件的路径
 		System.out.print(file.getAbsolutePath());
