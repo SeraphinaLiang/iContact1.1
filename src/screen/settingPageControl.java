@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import fileUpDownLoad.VCardHandle;
+import fileUpDownLoad.csvHandle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +30,9 @@ public class settingPageControl {
 	@FXML
 	private Button btUpload; // 从本机文件导入用户联系人
 
+	@FXML
+	private Button btSaveCSV;
+
 	// ---------------------------------------------------------------------------------
 
 	@FXML
@@ -44,19 +48,30 @@ public class settingPageControl {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
 
-		fileChooser.getExtensionFilters().addAll(
-				new FileChooser.ExtensionFilter("VCF", "*.vcf"),
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("VCF", "*.vcf"),
 				new FileChooser.ExtensionFilter("CSV", "*.csv"));
 
 		// 输入所选择文件的路径
-		if(file.getPath().contains(".vcf")) {
+		if (file.getPath().contains(".vcf")) {
 			VCardHandle.readVCard(file.getAbsolutePath());
+		} else if (file.getPath().contains(".csv")) {
+            csvHandle.readCSV(file.getAbsolutePath());
 		}
-		
+
 	}
 
 	@FXML
-	void save(ActionEvent event) {
+	void saveCSV(ActionEvent event) {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("保存联系人信息至...");
+		File directory = directoryChooser.showDialog(app.App.getPrimaryStage());
+		if (directory != null) {
+			csvHandle.exportCSV(directory.getAbsolutePath());
+		}
+	}
+
+	@FXML
+	void save(ActionEvent event) {// save vcf
 
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("保存联系人信息至...");
