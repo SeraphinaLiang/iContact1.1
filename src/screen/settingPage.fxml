@@ -74,12 +74,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Text fill="#796060" layoutX="168.0" layoutY="24.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="从本地导入联系人名片（格式CSV或VCF）" wrappingWidth="132.0">
+                  <Text fill="#796060" layoutX="168.0" layoutY="24.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="从本地导入联系人名片（格式CSV或VCF，CSV格式支持中文）" wrappingWidth="199.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#796060" layoutX="168.0" layoutY="77.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="将通讯录保存至本地 （格式CSV或VCF）" wrappingWidth="132.0">
+                  <Text fill="#796060" layoutX="168.0" layoutY="77.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="将通讯录保存至本地 （vcf文件不支持中文）" wrappingWidth="150.0">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -99,6 +99,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Text fill="#796060" layoutX="168.0" layoutY="129.0" opacity="0.72" strokeType="OUTSIDE" strokeWidth="0.0" text="将通讯录保存至本地 （支持中文）" wrappingWidth="150.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#f9ffc2" height="192.0" stroke="#615b5b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="0.0" strokeType="OUTSIDE" strokeWidth="10.0" width="373.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

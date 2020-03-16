@@ -698,6 +698,7 @@ public class SQLDemo {
 				}
 			} else {// isDelete=false---- inDB=true不用管,inDB=false 表中插入新行
 				if (!inDB) {
+					ct.setInDB(true);
 					PreparedStatement ps = null;
 					String sql = "insert into contactjava.connect(linkman_id,group_name) " + "values ( ? , ? ) ;";
 					try {

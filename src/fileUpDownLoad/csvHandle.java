@@ -51,7 +51,7 @@ public class csvHandle {
 			while ((nextLine = reader.readNext()) != null) {
 				for (int k = 0; k < nextLine.length; k++) {
 					System.out.println(nextLine[k]);
-					
+
 					String[] line = nextLine[k].split("\n");
 
 					// 对每个联系人操作************************************
@@ -103,9 +103,9 @@ public class csvHandle {
 								Data.connectList.add(con);
 							}
 						}
-                    
-				    app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
-					app.App.getSQLDemo().saveConnectToDB();
+
+						app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
+						app.App.getSQLDemo().saveConnectToDB();
 						// 读取照片————————————————————————————————————————
 //
 //					byte[] img = info[13].getBytes("GBK");
@@ -116,10 +116,10 @@ public class csvHandle {
 
 					}
 					// *******************************************************************
-					
+
 				}
 			}
-			
+
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -161,7 +161,22 @@ public class csvHandle {
 					out.write(cp.getDescription() + ",");
 					out.write("@" + utility.getGroupnameWithLinkmanID(cp.getId()) + ",");
 
+//					// photo
+//					app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
+//
+//					byte[] imageByte;
+//					File img = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
+//					FileInputStream fls = new FileInputStream(img);
+//					imageByte = new byte[(int) img.length()];
+//					fls.read(imageByte);
+//					fls.close();
+//					
+//					String photoData=new String(imageByte);
+//					out.write(photoData+ ",");
+
+					// end
 					out.write("\n");
+					
 					out.flush();
 
 				} // if
