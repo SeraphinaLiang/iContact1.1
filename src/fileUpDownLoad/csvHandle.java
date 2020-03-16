@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -29,6 +30,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import basic.Connect;
 import basic.ContactPerson;
 import staticStuff.Data;
+import staticStuff.utility;
 
 public class csvHandle {
 
@@ -39,7 +41,7 @@ public class csvHandle {
 
 			String name = null, telephone = null, phone = null, emergency = null, emergencyNumber = null;
 			String email = null, personalPage = null, birthday = null, company = null, address = null;
-			String postcode = null, description = null,group=null;
+			String postcode = null, description = null, group = null;
 
 			InputStreamReader is = new InputStreamReader(new FileInputStream(file), "GBK");
 			CSVParser csvParser = new CSVParserBuilder().withSeparator('\t').build();
@@ -47,9 +49,10 @@ public class csvHandle {
 			String[] nextLine;
 
 			while ((nextLine = reader.readNext()) != null) {
+				// for (int k = 0; k < nextLine.length; k++) {
 				String[] line = nextLine[0].split("\n");
 
-				//对每个联系人操作************************************
+				// 对每个联系人操作************************************
 				for (int i = 0; i < line.length; i++) {
 					System.out.println(line[i]);
 					String[] info = line[i].split(",");
@@ -67,13 +70,13 @@ public class csvHandle {
 					address = info[9];
 					postcode = info[10];
 					description = info[11];
-					group=info[12];
-					
-					String[] groups=group.split("@");// @group1@group2@
-					
-					//---------生成对象并扔进数据库-------------------
-					int id = (int) (Math.random() * 113 + Math.random() * 212 + name.hashCode());//新账号
-					ContactPerson cp=new ContactPerson(id, name, false);
+					group = info[12];
+
+					String[] groups = group.split("@");// @group1@group2@
+
+					// ---------生成对象并扔进数据库-------------------
+					int id = (int) (Math.random() * 113 + Math.random() * 2012 + (int)name.hashCode());// 新账号
+					ContactPerson cp = new ContactPerson(id, name, false);
 					cp.setAddress(address);
 					cp.setEmail(email);
 					cp.setBirthday(birthday);
@@ -85,31 +88,30 @@ public class csvHandle {
 					cp.setPhone(phone);
 					cp.setTelephone(telephone);
 					cp.setPostcode(postcode);
-					
+
 					Data.contactList.put(String.valueOf(id), cp);
 					app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
-					//--------------生成相应的connect并扔进数据库----------------
-					
-					for(int j=0;j<groups.length;j++) {
-						//如果有这个联系
-						if(Data.groupsList.containsKey(groups[j])) {
-							Connect con=new Connect(String.valueOf(id), groups[j], false);
+					// --------------生成相应的connect并扔进数据库----------------
+
+					for (int j = 0; j < groups.length; j++) {
+						// 如果有这个联系
+						if (Data.groupsList.containsKey(groups[j])) {
+							Connect con = new Connect(String.valueOf(id), groups[j], false);
 							Data.connectList.add(con);
 						}
-					}			
+					}
 					app.App.getSQLDemo().saveConnectToDB();
-					
-					//读取照片————————————————————————————————————————
-					
-					byte[] img =info[13].getBytes("GBK");
-					String imgPath = "resources/linkmanPhoto/" + cp.getId() + ".png";
-					byte2image(img, imgPath);
-					File f = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
-					app.App.getSQLDemo().putLinkmanPhotoWithPath(f.getAbsolutePath(), cp.getId());
-					
-				}
-				//*******************************************************************
 
+					// 读取照片————————————————————————————————————————
+//
+//					byte[] img = info[13].getBytes("GBK");
+//					String imgPath = "resources/linkmanPhoto/" + cp.getId() + ".png";
+//					byte2image(img, imgPath);
+//					File f = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
+//					app.App.getSQLDemo().putLinkmanPhotoWithPath(f.getAbsolutePath(), cp.getId());
+
+				}
+				// *******************************************************************
 			}
 
 		} catch (UnsupportedEncodingException e) {
@@ -125,40 +127,46 @@ public class csvHandle {
 	}
 
 	public static void exportCSV(String dir) {
-		
-		CSVWriter writer=null; 
-	     // feed in your array (or convert your data to an array)
-	     String[] entries = "first#second#third".split("#");
-	     writer.writeNext(entries);
-	    
-	     
-	     //------------------------------------------------------------------
-		Iterator<Entry<String, ContactPerson>> iter = Data.contactList.entrySet().iterator();
-		while (iter.hasNext()) {
-			Entry<String, ContactPerson> entry = iter.next();
-			ContactPerson cp = entry.getValue();
+		try {
 
-			//该联系人未被删除
-			if (!cp.isDelete()) {
-				 File file = new File(dir + "/" + cp.getId() + ".csv");
+			File file = new File(dir + "/" + "information.csv");
+			FileOutputStream fos = new FileOutputStream(file);
+			OutputStreamWriter out = new OutputStreamWriter(fos, "GBK");
 
-            //  writer= new CSVWriter(new FileWriter( new OutputStreamReader(new FileOutputStream(file), "GBK")));
+			Iterator<Entry<String, ContactPerson>> iter = Data.contactList.entrySet().iterator();
+			while (iter.hasNext()) {
+				Entry<String, ContactPerson> entry = iter.next();
+				ContactPerson cp = entry.getValue();
+				// *************************************************************************************
+				// 该联系人未被删除
+				if (!cp.isDelete()) {
+
+					out.write(cp.getName() + ",");
+					out.write(cp.getTelephone() + ",");
+					out.write(cp.getPhone() + ",");
+					out.write(cp.getEmergency() + ",");
+					out.write(cp.getEmergencyNumber() + ",");
+					out.write(cp.getEmail() + ",");
+					out.write(cp.getPersonalPage() + ",");
+					out.write(cp.getBirthday() + ",");
+					out.write(cp.getCompany() + ",");
+					out.write(cp.getAddress() + ",");
+					out.write(cp.getPostcode() + ",");
+					out.write(cp.getDescription() + ",");
+					out.write("@" + utility.getGroupnameWithLinkmanID(cp.getId()) + ",");
+
+					out.write("\n");
+					out.flush();
+
+				}//if
 				
-              try {
-				BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));
-				
-				
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-				
-				
-				
-			//	writer.flush();
-			}
+			}//while
+			
+//************************************************************************************
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	//	 writer.close();
 	}
 
 	public static void byte2image(byte[] data, String path) {
