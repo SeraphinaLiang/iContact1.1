@@ -169,7 +169,7 @@ public class contactPageControl implements Initializable {
 		photo.setImage(img);
 		// 导入数据库
 		app.App.getSQLDemo().putLinkmanPhotoWithPath(file.getAbsolutePath(), this.currentPerson);
-		System.out.println("上传成功");
+	
 	}
 
 	// 界面初始化
@@ -198,6 +198,7 @@ public class contactPageControl implements Initializable {
 			}
 		} catch (NullPointerException e) {
 		}
+		
 	}
 
 	// 新增联系人到分组
@@ -370,9 +371,9 @@ public class contactPageControl implements Initializable {
 			ContactPerson cp = Data.contactList.get(cell.getTheId());
 			if (this.currentGroup.equals("AllContacts") || this.currentGroup.equals("Ungroup")) {
 				// 删除所有connect 和这个 contactPerson
-
-				// Data.contactList.remove(cp.getId());
-				Data.contactList.get(cp.getId()).setDelete(true);
+				
+				cp.setDelete(true);
+				System.out.println("delete"+cp.getName()+cp.isDelete());
 
 				utility.deleteConnectWithLinkmanID(cp.getId());
 				repaint();
@@ -547,7 +548,6 @@ public class contactPageControl implements Initializable {
 				this.photo.setImage(defaultImg);
 			}
 		   
-			System.out.println(cp.getName());
 			System.out.print("ID" + cp.getId() + "照片：" + img.getUrl().toString());
 		   
 

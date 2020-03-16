@@ -275,12 +275,6 @@ public class utility {
 				n++;
 			}
 		}
-		for(int i=0;i<tiger.length;i++) {
-			System.out.println("tiger list:"+tiger[i]);
-		}
-		for(int i=0;i<lion.length;i++) {
-			System.out.println("lion list:"+lion[i]);
-		}
 		
 		outcome=FXCollections.observableArrayList(Arrays.asList(lion));
 		

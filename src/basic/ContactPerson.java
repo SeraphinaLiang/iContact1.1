@@ -30,14 +30,14 @@ public class ContactPerson {
 		this.id=id;
 		this.name=name;
 		this.inDB=inDB;
-		System.out.println("联系人账号： "+id);
+		System.out.println("isdelete： "+this.isDelete);
 	}
 	
 	public ContactPerson(int id,String name,boolean inDB) {
 		this.id=String.valueOf(id);
 		this.name=name;
 		this.inDB=inDB;
-		System.out.println("联系人账号： "+id);
+		System.out.println("isdelete： "+this.isDelete);
 	}
 	
 //--------------------------------------------------------------------------------------------------------------------	

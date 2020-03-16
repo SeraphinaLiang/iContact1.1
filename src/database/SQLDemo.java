@@ -449,6 +449,8 @@ public class SQLDemo {
 			}
 			// 2. inDB=false && isDelete=false-----插入新行（要加clientAccount）
 			else if (!inDB && !isDelete) {
+				cp.setInDB(true);
+				
 				PreparedStatement ps=null;
 				String sql;
 				sql = "insert into linkman(id,name,telephone,phone,emergency,emer_number,email,"
@@ -473,6 +475,7 @@ public class SQLDemo {
 					ps.setString(14, account);
 					
 					ps.executeUpdate();
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}finally {
@@ -488,6 +491,8 @@ public class SQLDemo {
 			}
 			// 3. inDB=true && isDelete=true-----DB删除该行（删除不存在的行没有影响）
 			else if (inDB && isDelete) {
+				Data.contactList.remove(cp.getId());
+				
 				PreparedStatement ps = null;
 				String sql;
 				sql = "delete from linkman where id= ? ";

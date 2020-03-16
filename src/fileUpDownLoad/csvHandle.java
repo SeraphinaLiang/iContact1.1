@@ -49,60 +49,64 @@ public class csvHandle {
 			String[] nextLine;
 
 			while ((nextLine = reader.readNext()) != null) {
-				// for (int k = 0; k < nextLine.length; k++) {
-				String[] line = nextLine[0].split("\n");
+				for (int k = 0; k < nextLine.length; k++) {
+					System.out.println(nextLine[k]);
+					
+					String[] line = nextLine[k].split("\n");
 
-				// 对每个联系人操作************************************
-				for (int i = 0; i < line.length; i++) {
-					System.out.println(line[i]);
-					String[] info = line[i].split(",");
+					// 对每个联系人操作************************************
+					for (int i = 0; i < line.length; i++) {
 
-					// -------------------------
-					name = info[0];
-					telephone = info[1];
-					phone = info[2];
-					emergency = info[3];
-					emergencyNumber = info[4];
-					email = info[5];
-					personalPage = info[6];
-					birthday = info[7];
-					company = info[8];
-					address = info[9];
-					postcode = info[10];
-					description = info[11];
-					group = info[12];
+						String[] info = line[i].split(",");
 
-					String[] groups = group.split("@");// @group1@group2@
+						// -------------------------
+						name = info[0];
+						telephone = info[1];
+						phone = info[2];
+						emergency = info[3];
+						emergencyNumber = info[4];
+						email = info[5];
+						personalPage = info[6];
+						birthday = info[7];
+						company = info[8];
+						address = info[9];
+						postcode = info[10];
+						description = info[11];
+						group = info[12];
 
-					// ---------生成对象并扔进数据库-------------------
-					int id = (int) (Math.random() * 113 + Math.random() * 2012 + (int)name.hashCode());// 新账号
-					ContactPerson cp = new ContactPerson(id, name, false);
-					cp.setAddress(address);
-					cp.setEmail(email);
-					cp.setBirthday(birthday);
-					cp.setCompany(company);
-					cp.setDescription(description);
-					cp.setEmergency(emergencyNumber);
-					cp.setEmergencyNumber(emergencyNumber);
-					cp.setPersonalPage(personalPage);
-					cp.setPhone(phone);
-					cp.setTelephone(telephone);
-					cp.setPostcode(postcode);
+						String[] groups = group.split("@");// @group1@group2@
 
-					Data.contactList.put(String.valueOf(id), cp);
-					app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
-					// --------------生成相应的connect并扔进数据库----------------
-
-					for (int j = 0; j < groups.length; j++) {
-						// 如果有这个联系
-						if (Data.groupsList.containsKey(groups[j])) {
-							Connect con = new Connect(String.valueOf(id), groups[j], false);
-							Data.connectList.add(con);
+						// ---------生成对象并扔进数据库-------------------
+						int id = (int) (Math.random() * 113 + Math.random() * 2012 + (int) name.hashCode());// 新账号
+						ContactPerson cp = new ContactPerson(id, name, false);
+						if (address != null) {
+							cp.setAddress(address);
 						}
-					}
-					app.App.getSQLDemo().saveConnectToDB();
+						cp.setEmail(email);
+						cp.setBirthday(birthday);
+						cp.setCompany(company);
+						cp.setDescription(description);
+						cp.setEmergency(emergencyNumber);
+						cp.setEmergencyNumber(emergencyNumber);
+						cp.setPersonalPage(personalPage);
+						cp.setPhone(phone);
+						cp.setTelephone(telephone);
+						cp.setPostcode(postcode);
 
-					// 读取照片————————————————————————————————————————
+						Data.contactList.put(String.valueOf(id), cp);
+						// --------------生成相应的connect并扔进数据库----------------
+
+						for (int j = 0; j < groups.length; j++) {
+							// 如果有这个联系
+							if (Data.groupsList.containsKey(groups[j])) {
+								Connect con = new Connect(String.valueOf(id), groups[j], false);
+								Data.connectList.add(con);
+							}
+						}
+                    
+				    app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
+					app.App.getSQLDemo().saveConnectToDB();
+						// 读取照片————————————————————————————————————————
 //
 //					byte[] img = info[13].getBytes("GBK");
 //					String imgPath = "resources/linkmanPhoto/" + cp.getId() + ".png";
@@ -110,10 +114,12 @@ public class csvHandle {
 //					File f = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
 //					app.App.getSQLDemo().putLinkmanPhotoWithPath(f.getAbsolutePath(), cp.getId());
 
+					}
+					// *******************************************************************
+					
 				}
-				// *******************************************************************
 			}
-
+			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -158,10 +164,10 @@ public class csvHandle {
 					out.write("\n");
 					out.flush();
 
-				}//if
-				
-			}//while
-			
+				} // if
+
+			} // while
+
 //************************************************************************************
 			out.close();
 		} catch (IOException e) {
