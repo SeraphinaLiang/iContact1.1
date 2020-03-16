@@ -11,5 +11,7 @@
 	<classpathentry kind="lib" path="C:/jar包/mysql-connector-java-8.0.16.jar"/>
 	<classpathentry kind="lib" path="C:/jar包/ez-vcard-0.10.5-with-deps/ez-vcard-0.10.5.jar"/>
 	<classpathentry kind="lib" path="C:/jar包/ez-vcard-0.10.5-with-deps/vinnie-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/jar包/opencsv-5.1.jar"/>
+	<classpathentry kind="lib" path="C:/jar包/commons-lang3-3.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
