@@ -24,8 +24,6 @@ public class settingPageControl {
 	private Button btConfirm;
 
 	@FXML
-	private Button btConnectPhone;// connect to my phone
-	@FXML
 	private Button btSave; // 导出用户联系人信息至本机
 	@FXML
 	private Button btUpload; // 从本机文件导入用户联系人
@@ -35,10 +33,6 @@ public class settingPageControl {
 
 	// ---------------------------------------------------------------------------------
 
-	@FXML
-	void connectToPhone(ActionEvent event) {
-
-	}
 
 	@FXML
 	void upload(ActionEvent event) {

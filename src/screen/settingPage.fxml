@@ -23,25 +23,7 @@
           <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="btConnectPhone" layoutX="14.0" layoutY="41.0" mnemonicParsing="false" onAction="#connectToPhone" prefHeight="43.0" prefWidth="216.0" style="-fx-background-color: #F08080;" text="Connect to my phone" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/img/iphone.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Comic Sans MS" size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
             <Pane prefHeight="175.0" prefWidth="368.0" GridPane.rowIndex="1">
                <children>
                   <Button fx:id="btUpload" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#upload" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #F08080;" text=" Upload" textFill="WHITE">

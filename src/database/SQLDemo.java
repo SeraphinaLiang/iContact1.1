@@ -434,7 +434,7 @@ public class SQLDemo {
 	}
 
 	// 保存Linkman联系人 client account
-	public void saveLinkmanToDB(String account) {
+	public synchronized void saveLinkmanToDB(String account) {
 
 		Iterator<Entry<String, ContactPerson>> iter = Data.contactList.entrySet().iterator();
 		while (iter.hasNext()) {

@@ -141,8 +141,8 @@ public class contactPageControl implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// 解决不在DB里面的联系人无法插入图片的问题
-		app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
+		// 解决不在DB里面的联系人无法插入图片的问题 会抛concurrent modification exception
+	//	app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
 		// --------------------
 		init();
 		this.initGroupCell();
