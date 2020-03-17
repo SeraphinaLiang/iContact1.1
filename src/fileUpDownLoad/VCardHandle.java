@@ -150,7 +150,7 @@ public class VCardHandle {
 			String description = null, emergency = null, emerNum = null, group = null;
 			String[] groups=null;
 
-			if (vcard.getNotes().size()>0) {
+			if (vcard.getNotes().size()!=0) {
 				String message=vcard.getNotes().get(0).getValue();
 				String[] mess=message.split("\n");
 				
@@ -198,7 +198,9 @@ public class VCardHandle {
 			app.App.getSQLDemo().saveConnectToDB();
 
 			// 把照片扔进数据库里
-			if (vcard.getPhotos().size() > 0) {
+			if (vcard.getPhotos().size() != 0) {
+				System.out.println(vcard.getPhotos().size());
+				
 				Photo photo = vcard.getPhotos().get(0);
 				byte[] img = photo.getData();
 				String path = "resources/linkmanPhoto/" + cp.getId() + ".png";

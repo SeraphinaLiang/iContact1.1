@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -105,21 +106,20 @@ public class csvHandle {
 						}
 
 						app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
-						app.App.getSQLDemo().saveConnectToDB();
+						
 						// 读取照片————————————————————————————————————————
-//
-//					byte[] img = info[13].getBytes("GBK");
-//					String imgPath = "resources/linkmanPhoto/" + cp.getId() + ".png";
-//					byte2image(img, imgPath);
-//					File f = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
-//					app.App.getSQLDemo().putLinkmanPhotoWithPath(f.getAbsolutePath(), cp.getId());
+					int index=path.lastIndexOf("\\");
+					String sub=path.substring(0,index+1);
+					File src=new File(sub+cp.getName()+".png");
+					System.out.println(src.getAbsolutePath());
+					app.App.getSQLDemo().putLinkmanPhotoWithPath(src.getAbsolutePath(), cp.getId());
 
 					}
 					// *******************************************************************
 
 				}
-			}
-
+			} 
+          app.App.getSQLDemo().saveConnectToDB();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -161,22 +161,18 @@ public class csvHandle {
 					out.write(cp.getDescription() + ",");
 					out.write("@" + utility.getGroupnameWithLinkmanID(cp.getId()) + ",");
 
-//					// photo
-//					app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
-//
-//					byte[] imageByte;
-//					File img = new File("resources/linkmanPhoto/" + cp.getId() + ".png");
-//					FileInputStream fls = new FileInputStream(img);
-//					imageByte = new byte[(int) img.length()];
-//					fls.read(imageByte);
-//					fls.close();
-//					
-//					String photoData=new String(imageByte);
-//					out.write(photoData+ ",");
+					// photo-----------------------------------------------
+					app.App.getSQLDemo().readLinkmanImageFromDB(cp.getId());
+
+					String src = "resources/linkmanPhoto/" + cp.getId() + ".png";
+					String des = dir + "/" + cp.getName() + ".png";
+					copyFile(src,des);
+//					File srcFile = new File(src);
+//					File desFile = new File(des);
+//					copyFileUsingFileStreams(srcFile, desFile);
 
 					// end
 					out.write("\n");
-					
 					out.flush();
 
 				} // if
@@ -216,6 +212,44 @@ public class csvHandle {
 
 		}
 
+	}
+
+	public static void copyFileUsingFileStreams(File source, File dest) throws IOException {
+		InputStream input = null;
+		OutputStream output = null;
+		try {
+			input = new FileInputStream(source);
+			output = new FileOutputStream(dest);
+			byte[] buf = new byte[1024];
+			int bytesRead;
+			while ((bytesRead = input.read(buf)) > 0) {
+				output.write(buf, 0, bytesRead);
+			}
+		} finally {
+			input.close();
+			output.close();
+		}
+	}
+
+	public static void copyFile(String src, String target) {
+		File srcFile = new File(src);
+		File targetFile = new File(target);
+		try {
+			InputStream in = new FileInputStream(srcFile);
+			OutputStream out = new FileOutputStream(targetFile);
+			byte[] bytes = new byte[1024];
+			int len = -1;
+			while ((len = in.read(bytes)) != -1) {
+				out.write(bytes, 0, len);
+			}
+			in.close();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("文件复制成功");
 	}
 
 }
