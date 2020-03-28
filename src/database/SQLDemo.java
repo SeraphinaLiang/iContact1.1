@@ -432,6 +432,48 @@ public class SQLDemo {
 			}
 		}
 	}
+	
+	// 保存单个Linkman联系人 client account
+	public void saveSingleLinkmanToDB(String account,ContactPerson cp) {
+		cp.setInDB(true);
+		
+		PreparedStatement ps=null;
+		String sql;
+		sql = "insert into linkman(id,name,telephone,phone,emergency,emer_number,email,"
+				+ "personalpage,birthday,company,address,postcode,description,client_account) " 
+				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try {
+			ps=conn.prepareStatement(sql);
+			
+			ps.setString(1,cp.getId() );
+			ps.setString(2, cp.getName());
+			ps.setString(3, cp.getTelephone());
+			ps.setString(4, cp.getPhone());
+			ps.setString(5, cp.getEmergency());
+			ps.setString(6, cp.getEmergencyNumber());
+			ps.setString(7, cp.getEmail());
+			ps.setString(8, cp.getPersonalPage());
+			ps.setString(9, cp.getBirthday());
+			ps.setString(10, cp.getCompany());
+			ps.setString(11, cp.getAddress());
+			ps.setString(12, cp.getPostcode());
+			ps.setString(13, cp.getDescription());
+			ps.setString(14, account);
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if (null != ps) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	// 保存Linkman联系人 client account
 	public synchronized void saveLinkmanToDB(String account) {

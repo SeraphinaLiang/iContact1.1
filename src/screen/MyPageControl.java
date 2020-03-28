@@ -108,27 +108,27 @@ public class MyPageControl {
 
 	@FXML
 	void initialize() {
-		app.App.getSQLDemo().saveClientToDB();//解决初次登录不能插入照片
-		
+		app.App.getSQLDemo().saveClientToDB();// 解决初次登录不能插入照片
+
 		setOriginalInformation();
 		textAreaListener();
 		genderListener();
-        //从数据库导入该用户照片
+		// 从数据库导入该用户照片
 		getPhotoFromDB();
 
 		// webview
 		webEngine = webview.getEngine();
 		webEngine.load("https://www.bbcearth.com");
 	}
-	
+
 	void getPhotoFromDB() {
 		// 从数据库调入用户照片resources/clientPhoto/" + account + ".jpg";
 		app.App.getSQLDemo().readClientImageFromDB(Data.currentClient.getAccount());
 		Image img = new Image("file:resources/clientPhoto/" + Data.currentClient.getAccount() + ".png");
 		this.clientPhoto.setImage(img);
 
-	//	System.out.println(this.clientPhoto.getImage().getHeight());
-		if (this.clientPhoto.getImage().getHeight()<1.0) {
+		// System.out.println(this.clientPhoto.getImage().getHeight());
+		if (this.clientPhoto.getImage().getHeight() < 1.0) {
 			Image defaultImg = new Image("file:resources/img/irish.png");
 			this.clientPhoto.setImage(defaultImg);
 		}
@@ -143,11 +143,8 @@ public class MyPageControl {
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		File file = fileChooser.showOpenDialog(app.App.getPrimaryStage());
 
-		fileChooser.getExtensionFilters().addAll(
-				 new FileChooser.ExtensionFilter("All Images", "*.*"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg")
-		,new FileChooser.ExtensionFilter("PNG", "*.png")
-		);
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
 
 		// Image img = new Image("file:C:/Users/pc/Desktop/login.jpg");
 		// System.out.println(file.toURI().toString());
@@ -195,14 +192,14 @@ public class MyPageControl {
 	void changeFirstname(ActionEvent event) {
 		Data.currentClient.setFirstName(this.tfFirstname.getText());
 		this.tfFirstname.setText(this.tfFirstname.getText());
-		this.TextName.setText(this.tfFirstname.getText()+" "+Data.currentClient.getLastName());
+		this.TextName.setText(this.tfFirstname.getText() + " " + Data.currentClient.getLastName());
 	}
 
 	@FXML
 	void changeLastname(ActionEvent event) {
 		Data.currentClient.setLastName(this.tfLastname.getText());
 		this.tfLastname.setText(this.tfLastname.getText());
-		this.TextName.setText(Data.currentClient.getFirstName()+" "+this.tfLastname.getText());
+		this.TextName.setText(Data.currentClient.getFirstName() + " " + this.tfLastname.getText());
 	}
 
 	@FXML
@@ -231,31 +228,35 @@ public class MyPageControl {
 		String new1 = this.tfNewpassword.getText();
 		String new2 = this.tfpasswordRepeat.getText();
 
-		// 旧密码输入错误/旧密码不为空
-		if ((!old.equals(Data.currentClient.getPassword())) && (!old.equals(""))) {
-			this.labelPassword.setText("Your old Password is wrong.");
-		} else {
-			// 新密码为空
-			if (new1.equals("") || new2.equals("")) {
-				this.labelPassword.setText("");
-				return;
-			}
-			// 两次新密码输入不一致
-			else if ((!new1.equals(new2))) {
-				this.labelPassword.setText("New passwords are not identical.");
-			} else {// 旧密码正确，新密码一致
-				if (new1.equals(old)) {// 新旧密码一致
-					this.labelPassword.setText("Old password and new password are the same.");
-				} else {
-					this.labelPassword.setText("Modified successfully.");
-					Data.currentClient.setPassword(new1);
-					// 清空用户输入
-					this.tfOldpassword.clear();
-					this.tfNewpassword.clear();
-					this.tfpasswordRepeat.clear();
+		// 旧密码不为空
+		if (!this.tfOldpassword.getText().isEmpty()) {
+			// 旧密码输入错误
+			if ((!old.equals(Data.currentClient.getPassword()))) {
+				this.labelPassword.setText("Your old Password is wrong.");
+			} else {
+				// 新密码为空
+				if (new1.equals("") || new2.equals("")) {
+					this.labelPassword.setText("");
+					return;
+				}
+				// 两次新密码输入不一致
+				else if ((!new1.equals(new2))) {
+					this.labelPassword.setText("New passwords are not identical.");
+				} else {// 旧密码正确，新密码一致
+					if (new1.equals(old)) {// 新旧密码一致
+						this.labelPassword.setText("Old password and new password are the same.");
+					} else {
+						this.labelPassword.setText("Modified successfully.");
+						Data.currentClient.setPassword(new1);
+						// 清空用户输入
+						this.tfOldpassword.clear();
+						this.tfNewpassword.clear();
+						this.tfpasswordRepeat.clear();
+					}
 				}
 			}
 		}
+
 	}
 
 	@FXML

@@ -7,11 +7,17 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/jar包/pinyin4j-2.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/jar包/mysql-connector-java-8.0.16.jar"/>
-	<classpathentry kind="lib" path="C:/jar包/ez-vcard-0.10.5-with-deps/ez-vcard-0.10.5.jar"/>
-	<classpathentry kind="lib" path="C:/jar包/ez-vcard-0.10.5-with-deps/vinnie-2.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/jar包/opencsv-5.1.jar"/>
-	<classpathentry kind="lib" path="C:/jar包/commons-lang3-3.9.jar"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER">
+		<attributes>
+			<attribute name="annotationpath" value="C:/Program Files (x86)/eclipse/plugins/org.eclipse.fx.ide.css.jfx8_2.3.0.201603030809.jar"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/jarBag/commons-lang3-3.9.jar"/>
+	<classpathentry kind="lib" path="C:/jarBag/mysql-connector-java-8.0.16.jar"/>
+	<classpathentry kind="lib" path="C:/jarBag/opencsv-5.1.jar"/>
+	<classpathentry kind="lib" path="C:/jarBag/pinyin4j-2.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/jarBag/vinnie-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/jarBag/ez-vcard-0.10.5-with-deps/ez-vcard-0.10.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

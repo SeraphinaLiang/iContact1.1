@@ -105,7 +105,7 @@ public class csvHandle {
 							}
 						}
 
-						app.App.getSQLDemo().saveLinkmanToDB(Data.currentClient.getAccount());
+					app.App.getSQLDemo().saveSingleLinkmanToDB(Data.currentClient.getAccount(),cp);
 						
 						// 读取照片————————————————————————————————————————
 					int index=path.lastIndexOf("\\");

@@ -548,7 +548,7 @@ public class contactPageControl implements Initializable {
 				this.photo.setImage(defaultImg);
 			}
 		   
-			System.out.print("ID" + cp.getId() + "照片：" + img.getUrl().toString());
+			
 		   
 
 		// ---------------------------------------------------------
