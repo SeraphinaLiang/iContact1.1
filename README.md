@@ -1,4 +1,4 @@
-# iContact1.1 a class design for java
+# iContact1.1 本科小课设
 
 1. 最后打包的时候，把图片都放进了src里面。
 
